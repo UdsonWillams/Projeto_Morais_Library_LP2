@@ -11,10 +11,15 @@ public class Livros {
     private int anoDeLancamento;
     
     public Livros() {}
-    
+
+    //Constructor 
     public Livros(String nomeDoLivro, String tipoDoLivro, String autor, String editora, int anoDeLancamento) {
-        
-    }
+        this.nomeDoLivro = nomeDoLivro;
+        this.tipoDoLivro = tipoDoLivro;
+        this.autor = autor;
+        this.editora = editora;
+        this.anoDeLancamento = anoDeLancamento;
+    }    
     
     //Gets e Sets
     public String getNomeDoLivro() {
