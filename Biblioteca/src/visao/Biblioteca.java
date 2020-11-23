@@ -71,8 +71,9 @@ public class Biblioteca extends javax.swing.JFrame {
         txtAreaResultado.setRows(5);
         jScrollPane1.setViewportView(txtAreaResultado);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Library");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro");
+        setPreferredSize(new java.awt.Dimension(730, 370));
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
@@ -350,9 +351,6 @@ public class Biblioteca extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCpfActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
       

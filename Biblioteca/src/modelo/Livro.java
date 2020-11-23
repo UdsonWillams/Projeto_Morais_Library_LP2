@@ -1,26 +1,31 @@
 package modelo;
+
+import java.util.ArrayList;
+
 /**
  * @author UdsonWillams
  */
-public class Livros {
+public class Livro {
 
     private String nomeDoLivro;
     private String tipoDoLivro;
     private String autor;
     private String editora;
     private int anoDeLancamento;
+    private int quantidadeLivros;
     
-    public Livros() {}
+    //Constructores
+    public Livro() {}
 
-    //Constructor 
-    public Livros(String nomeDoLivro, String tipoDoLivro, String autor, String editora, int anoDeLancamento) {
+    public Livro(String nomeDoLivro, String tipoDoLivro, String autor, String editora, int anoDeLancamento, int quantidadeLivros) {
         this.nomeDoLivro = nomeDoLivro;
         this.tipoDoLivro = tipoDoLivro;
         this.autor = autor;
         this.editora = editora;
         this.anoDeLancamento = anoDeLancamento;
-    }    
-    
+        this.quantidadeLivros = quantidadeLivros;
+    }
+
     //Gets e Sets
     public String getNomeDoLivro() {
         return nomeDoLivro;
@@ -61,10 +66,18 @@ public class Livros {
     public void setAnoDeLancamento(int anoDeLancamento) {
         this.anoDeLancamento = anoDeLancamento;
     }
+
+    public int getQuantidadeLivros() {
+        return quantidadeLivros;
+    }
+
+    public void setQuantidadeLivros(int quantidadeLivros) {
+        this.quantidadeLivros = quantidadeLivros;
+    }  
     // fim dos get/set
-    
+   
     // To string
     public String toString() {
-        return "Livros{" + "nomeDoLivro=" + nomeDoLivro + ", tipoDoLivro=" + tipoDoLivro + ", autor=" + autor + ", editora=" + editora + ", anoDeLancamento=" + anoDeLancamento + '}';
-    }    
+        return "Livro{" + "nomeDoLivro=" + nomeDoLivro + ", tipoDoLivro=" + tipoDoLivro + ", autor=" + autor + ", editora=" + editora + ", anoDeLancamento=" + anoDeLancamento + ", quantidadeLivros=" + quantidadeLivros + '}';
+    }                                                      
 }
