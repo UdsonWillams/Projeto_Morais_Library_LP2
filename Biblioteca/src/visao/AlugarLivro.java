@@ -13,11 +13,10 @@ public class AlugarLivro extends javax.swing.JFrame {
     
     ArrayList<Livro> livros = new ArrayList<Livro>();
     
-        Livro biblia = new Livro("a biblia", "digital", "JC", "N sei", 2000, 0);
+        Livro biblia = new Livro("a biblia", "eletronico", "JC", "N sei", 2000, 0);
         Livro matematica = new Livro("naruto", "fisico", "udson", "N sei", 1990, 5);
         Livro ingles = new Livro("o ingles", "fisico", "joao", "N sei", 2010, 3);
-        
-        boolean semCamposValidos;
+              
     
     public AlugarLivro() {
         
@@ -45,7 +44,6 @@ public class AlugarLivro extends javax.swing.JFrame {
         aluguelNomeUsario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Aluguel de Livros");
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -167,6 +165,7 @@ public class AlugarLivro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_nomeLivroActionPerformed
 
+    
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
             
     }//GEN-LAST:event_formComponentShown
