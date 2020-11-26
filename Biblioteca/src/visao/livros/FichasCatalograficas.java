@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package visao;
+package visao.livros;
 
 import java.util.ArrayList;
 import modelo.Livro;
@@ -35,6 +35,7 @@ public class FichasCatalograficas extends javax.swing.JFrame {
         nomeDoLivro = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         texto = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +51,13 @@ public class FichasCatalograficas extends javax.swing.JFrame {
         texto.setRows(5);
         jScrollPane1.setViewportView(texto);
 
+        jButton1.setText("Voltar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -62,8 +70,13 @@ public class FichasCatalograficas extends javax.swing.JFrame {
                 .addGap(27, 27, 27))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(123, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(111, 111, 111))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(111, 111, 111))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,7 +87,9 @@ public class FichasCatalograficas extends javax.swing.JFrame {
                     .addComponent(nomeDoLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         pack();
@@ -82,21 +97,33 @@ public class FichasCatalograficas extends javax.swing.JFrame {
 
     private void nomeDoLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeDoLivroActionPerformed
         
-        AlugarLivro teste = new AlugarLivro();
+        LivrosDaBiblioteca teste = new LivrosDaBiblioteca();
         int i;
         ArrayList<Livro> teste2 = new ArrayList<Livro>();
         Livro validador = new Livro();
         teste2 = teste.livros;
         
-        for (i = 0; i < 3; i++){
+        int quantidade = teste.livros.size();
+        
+        for (i = 0; i < quantidade; i++){
         
             validador = teste2.get(i);
             if (validador.getNomeDoLivro().equals(nomeDoLivro.getText())){
                 
-                texto.setText("NOME: " + validador.getNomeDoLivro().toUpperCase() + "\n" + "TIPO: " + validador.getTipoDoLivro().toUpperCase());
+                texto.setText("NOME: " + validador.getNomeDoLivro().toUpperCase() +
+                        "\n" + "TIPO: " + validador.getTipoDoLivro().toUpperCase() +
+                        "\n" + "AUTOR: " + validador.getAutor().toUpperCase() +
+                        "\n" + "EDITORA: " + validador.getEditora().toUpperCase() + 
+                        "\n" + "QUANTIDADE DISPONIVEL: " + validador.getQuantidadeLivros());
             }            
         }
     }//GEN-LAST:event_nomeDoLivroActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        this.setVisible(false);
+        new TelaLivros().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,6 +161,7 @@ public class FichasCatalograficas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nomeDoLivro;

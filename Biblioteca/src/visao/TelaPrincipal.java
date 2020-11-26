@@ -5,6 +5,8 @@
  */
 package visao;
 
+import visao.livros.TelaLivros;
+
 /**
  *
  * @author UdsonWillams
@@ -112,7 +114,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Abre a tela dos livros
         this.setVisible(false);
-        new TelaCadastroLivros().setVisible(true);
+        new TelaLivros().setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
