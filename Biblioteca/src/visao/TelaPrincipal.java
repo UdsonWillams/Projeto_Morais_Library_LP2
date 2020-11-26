@@ -52,7 +52,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jButton2.setText("eventos");
+        jButton2.setText("Eventos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -119,7 +119,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        Eventos evento = new Eventos();
+        evento.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
