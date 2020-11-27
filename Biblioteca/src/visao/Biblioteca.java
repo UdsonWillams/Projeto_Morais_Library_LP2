@@ -508,7 +508,7 @@ public class Biblioteca extends javax.swing.JFrame {
 
     private void btnVoltaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltaMenuActionPerformed
         // TODO add your handling code here:
-        new TelaPrincipal().setVisible(true);
+        new TelaPrincipalAdmin().setVisible(true);
         dispose();
         
     }//GEN-LAST:event_btnVoltaMenuActionPerformed

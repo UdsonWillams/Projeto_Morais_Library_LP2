@@ -12,15 +12,13 @@ import javax.swing.JOptionPane;
  * @author ander
  */
 public class TelaLogin extends javax.swing.JFrame {
-
     /**
      * Creates new form TelaLogin
      */
     public TelaLogin() {
-        initComponents();
+        initComponents();                   
         this.setLocationRelativeTo(null);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,13 +26,13 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     
-    public boolean loginAdmin(String login, String senha) {
+    public boolean loginAdmin(String login, String senha) {        
         return login.equals("admin") && senha.equals("123");
     }
     
     public boolean loginUsuario(String login, String senha) {
-        return login.equals("usuario") && senha.equals("456");
-        
+        return login.equals("usuario") && senha.equals("456");        
+    
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -56,6 +54,12 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Senha");
+
+        txtLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLoginActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setText("Entrar");
@@ -111,32 +115,34 @@ public class TelaLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(this.loginAdmin(txtLogin.getText(), new String(txtSenha.getPassword()))){
             
+                
             JOptionPane.showMessageDialog(null,"SEJA BEM VINDO ADMINISTRADOR");
-            TelaPrincipal telaPrincipal = new TelaPrincipal();
+            TelaPrincipalAdmin telaPrincipal = new TelaPrincipalAdmin();
             telaPrincipal.setVisible(true);
-            dispose();
-            return;
-            
+            dispose();            
+            return;            
         }
         if(this.loginUsuario(txtLogin.getText(), new String(txtSenha.getPassword()))) {
            
             JOptionPane.showMessageDialog(null,"SEJA BEM VINDO USUÁRIO");
-            TelaPrincipal telaPrincipal = new TelaPrincipal();
+            TelaPrincipalUsuario telaPrincipal = new TelaPrincipalUsuario();
             telaPrincipal.setVisible(true);
-            dispose();
-            
+            dispose();            
         }
         else {
             JOptionPane.showMessageDialog(null,"SENHA OU LOGIN INVÁLIDO");
             
-        }
-        
+        }        
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLoginActionPerformed
+                
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) {                
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -167,7 +173,7 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
