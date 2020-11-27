@@ -32,6 +32,9 @@ public class Biblioteca extends javax.swing.JFrame {
     public void apagar() {
         txtNomeUsuario.setText(null);
         txtCpf.setText(null);
+        txtGenero.setSelectedItem(null);
+        txtTelefone.setText(null);
+        txtEmail.setText(null);
         txtEndereco.setText(null);
         txtCidade.setText(null);
         txtCurso.setText(null);
@@ -79,6 +82,7 @@ public class Biblioteca extends javax.swing.JFrame {
         tabelaCadastro = new javax.swing.JTable();
         btnRemoveUsuario = new javax.swing.JButton();
         btnSairTabela = new javax.swing.JButton();
+        btnVoltaMenu = new javax.swing.JButton();
 
         jLabel15.setText("jLabel15");
 
@@ -229,9 +233,9 @@ public class Biblioteca extends javax.swing.JFrame {
                         .addComponent(txtCurso)))
                 .addGap(24, 24, 24))
             .addGroup(panCadastroLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(41, 41, 41)
                 .addComponent(btnCadastro)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSairCadastro)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -272,11 +276,11 @@ public class Biblioteca extends javax.swing.JFrame {
                 .addGroup(panCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
+                .addGap(32, 32, 32)
                 .addGroup(panCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastro)
                     .addComponent(btnSairCadastro))
-                .addGap(67, 67, 67))
+                .addGap(81, 81, 81))
         );
 
         panResultado.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado"));
@@ -342,6 +346,14 @@ public class Biblioteca extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
+        btnVoltaMenu.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnVoltaMenu.setText("Voltar ao menu");
+        btnVoltaMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltaMenuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -364,9 +376,12 @@ public class Biblioteca extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCadastrarUsuario)
-                            .addComponent(btnVisualizar))
-                        .addGap(307, 307, 307))))
+                            .addComponent(btnVisualizar)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnCadastrarUsuario)
+                                .addGap(84, 84, 84)
+                                .addComponent(btnVoltaMenu)))
+                        .addGap(150, 150, 150))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,20 +390,20 @@ public class Biblioteca extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(btnCadastrarUsuario))
+                    .addComponent(btnCadastrarUsuario)
+                    .addComponent(btnVoltaMenu))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(btnVisualizar))
-                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
+                        .addGap(35, 35, 35)
                         .addComponent(panResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                        .addGap(8, 8, 8)
+                        .addComponent(panCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -491,6 +506,13 @@ public class Biblioteca extends javax.swing.JFrame {
         panResultado.setVisible(false);
     }//GEN-LAST:event_btnSairTabelaActionPerformed
 
+    private void btnVoltaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltaMenuActionPerformed
+        // TODO add your handling code here:
+        new TelaPrincipal().setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_btnVoltaMenuActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
       
@@ -531,6 +553,7 @@ public class Biblioteca extends javax.swing.JFrame {
     private javax.swing.JButton btnSairCadastro;
     private javax.swing.JButton btnSairTabela;
     private javax.swing.JButton btnVisualizar;
+    private javax.swing.JButton btnVoltaMenu;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
