@@ -7,15 +7,13 @@ package modelo;
 public class Espaco {
     
     //Atributos
-    private float areaUm;
-    private float areaDois;
+    private float area;
     private String nomeEspaco;
 
     
     //Métodos
-    public Espaco(float areaUm, float areaDois, String nomeEspaco) {
-        this.areaUm = areaUm;
-        this.areaDois = areaDois;
+    public Espaco(String nomeEspaco, float area) {
+        this.area = area;
         this.nomeEspaco = nomeEspaco;
     }
     
@@ -24,20 +22,12 @@ public class Espaco {
     
     //Get, Set e toString
 
-    public float getAreaUm() {
-        return areaUm;
+    public float getArea() {
+        return area;
     }
 
-    public void setAreaUm(float areaUm) {
-        this.areaUm = areaUm;
-    }
-
-    public float getAreaDois() {
-        return areaDois;
-    }
-
-    public void setAreaDois(float areaDois) {
-        this.areaDois = areaDois;
+    public void setArea(float area) {
+        this.area = area;
     }
 
     public String getNomeEspaco() {
@@ -50,7 +40,7 @@ public class Espaco {
 
     @Override
     public String toString() {
-        return "Espaco{" + "areaUm=" + areaUm + ", areaDois=" + areaDois + ", nomeEspaco=" + nomeEspaco + '}';
+        return "Espaco{" + "area=" + area + ", nomeEspaco=" + nomeEspaco + '}';
     }
     
 }

@@ -5,7 +5,7 @@
  */
 package visao;
 
-import visao.eventos.CadEvento;
+import visao.eventos.*;
 
 /**
  *
@@ -37,9 +37,9 @@ public class TelaEvento extends javax.swing.JFrame {
         jMenuItemImpEv = new javax.swing.JMenuItem();
         jMenuItemExcEv = new javax.swing.JMenuItem();
         jMenuEspaço = new javax.swing.JMenu();
+        jMenuItemCadSalaEstudo = new javax.swing.JMenuItem();
         jMenuItemCadEsp = new javax.swing.JMenuItem();
         jMenuItemResEsp = new javax.swing.JMenuItem();
-        jMenuItemChkEsp = new javax.swing.JMenuItem();
         jMenuSair = new javax.swing.JMenu();
         jMenuItemSairMenu = new javax.swing.JMenuItem();
         jMenuItemSairUser = new javax.swing.JMenuItem();
@@ -77,14 +77,19 @@ public class TelaEvento extends javax.swing.JFrame {
 
         jMenuEspaço.setText("Espaços");
 
+        jMenuItemCadSalaEstudo.setText("Cadastrar Sala de Estudo");
+        jMenuItemCadSalaEstudo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCadSalaEstudoActionPerformed(evt);
+            }
+        });
+        jMenuEspaço.add(jMenuItemCadSalaEstudo);
+
         jMenuItemCadEsp.setText("Cadastrar Espaço");
         jMenuEspaço.add(jMenuItemCadEsp);
 
         jMenuItemResEsp.setText("Reservar Espaço");
         jMenuEspaço.add(jMenuItemResEsp);
-
-        jMenuItemChkEsp.setText("Checar Espaço");
-        jMenuEspaço.add(jMenuItemChkEsp);
 
         jMenuBar1.add(jMenuEspaço);
 
@@ -133,16 +138,22 @@ public class TelaEvento extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSairMenuActionPerformed
 
     private void jMenuItemSairUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairUserActionPerformed
-        /*TelaLogin tela = new TelaLogin();
+        TelaLogin tela = new TelaLogin();
         tela.setVisible(true);
         dispose();
-        */
+        
     }//GEN-LAST:event_jMenuItemSairUserActionPerformed
 
     private void jMenuItemCadEvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadEvActionPerformed
         CadEvento cadEvento = new CadEvento();
         cadEvento.setVisible(true);
     }//GEN-LAST:event_jMenuItemCadEvActionPerformed
+
+    private void jMenuItemCadSalaEstudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadSalaEstudoActionPerformed
+        CadEspaco cadEspaco = new CadEspaco();
+        cadEspaco.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItemCadSalaEstudoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,7 +198,7 @@ public class TelaEvento extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuEvento;
     private javax.swing.JMenuItem jMenuItemCadEsp;
     private javax.swing.JMenuItem jMenuItemCadEv;
-    private javax.swing.JMenuItem jMenuItemChkEsp;
+    private javax.swing.JMenuItem jMenuItemCadSalaEstudo;
     private javax.swing.JMenuItem jMenuItemExcEv;
     private javax.swing.JMenuItem jMenuItemImpEv;
     private javax.swing.JMenuItem jMenuItemResEsp;

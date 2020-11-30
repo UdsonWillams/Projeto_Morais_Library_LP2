@@ -16,7 +16,7 @@ public class CadEvento extends javax.swing.JFrame {
 
     String evenCmc, evenFim, evenNome, evenResp, evenEspaco;
     int evenCap;
-    Espaco espaco = new Espaco(1, 2, "lol");
+    Espaco espaco = new Espaco("lol", 1);
     ArrayList<Evento> eventos = new ArrayList<>();
     /**
      * Creates new form cadEventop
@@ -46,8 +46,9 @@ public class CadEvento extends javax.swing.JFrame {
         jFormattedTextFieldEvenCmc = new javax.swing.JFormattedTextField();
         jFormattedTextFieldEvenFim = new javax.swing.JFormattedTextField();
         jFormattedTextFieldEvenCap = new javax.swing.JFormattedTextField();
-        jButton1 = new javax.swing.JButton();
+        jButtonCadastrar = new javax.swing.JButton();
         jComboBoxEvenEspaco = new javax.swing.JComboBox<>();
+        jButtonCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -85,14 +86,21 @@ public class CadEvento extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCadastrar.setText("Cadastrar");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonCadastrarActionPerformed(evt);
             }
         });
 
         jComboBoxEvenEspaco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Espaço 1", "Espaço 2", "Espaço 3", "Espaço 4" }));
+
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelCadEventoLayout = new javax.swing.GroupLayout(jPanelCadEvento);
         jPanelCadEvento.setLayout(jPanelCadEventoLayout);
@@ -100,8 +108,7 @@ public class CadEvento extends javax.swing.JFrame {
             jPanelCadEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCadEventoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelCadEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelCadEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCadEventoLayout.createSequentialGroup()
                         .addGroup(jPanelCadEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabelEvenCap, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
@@ -113,12 +120,16 @@ public class CadEvento extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanelCadEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jFormattedTextFieldEvenCap)
-                            .addComponent(jFormattedTextFieldEvenFim)
+                            .addComponent(jFormattedTextFieldEvenFim, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                             .addComponent(jFormattedTextFieldEvenResp)
                             .addComponent(jFormattedTextFieldEvenNome)
                             .addComponent(jFormattedTextFieldEvenCmc)
-                            .addComponent(jComboBoxEvenEspaco, 0, 150, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jComboBoxEvenEspaco, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCadEventoLayout.createSequentialGroup()
+                        .addComponent(jButtonCadastrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCancelar)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanelCadEventoLayout.setVerticalGroup(
             jPanelCadEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,9 +158,11 @@ public class CadEvento extends javax.swing.JFrame {
                 .addGroup(jPanelCadEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelEvenEspaco)
                     .addComponent(jComboBoxEvenEspaco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                .addGap(16, 16, 16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelCadEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCadastrar)
+                    .addComponent(jButtonCancelar))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -180,11 +193,11 @@ public class CadEvento extends javax.swing.JFrame {
                 .addGap(226, 226, 226))
         );
 
-        setSize(new java.awt.Dimension(346, 388));
+        setSize(new java.awt.Dimension(369, 388));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
   
         evenNome = jFormattedTextFieldEvenNome.getText();
         evenResp = jFormattedTextFieldEvenResp.getText();
@@ -195,11 +208,15 @@ public class CadEvento extends javax.swing.JFrame {
         
         eventos.add(new Evento(evenNome, evenResp, evenCmc, evenFim, 200, espaco));
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jFormattedTextFieldEvenNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldEvenNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextFieldEvenNomeActionPerformed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,7 +255,8 @@ public class CadEvento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonCadastrar;
+    private javax.swing.JButton jButtonCancelar;
     private javax.swing.JComboBox<String> jComboBoxEvenEspaco;
     private javax.swing.JFormattedTextField jFormattedTextFieldEvenCap;
     private javax.swing.JFormattedTextField jFormattedTextFieldEvenCmc;

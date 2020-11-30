@@ -39,6 +39,14 @@
             <Property name="text" type="java.lang.String" value="Espa&#xe7;os"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemCadSalaEstudo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cadastrar Sala de Estudo"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemCadSalaEstudoActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemCadEsp">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cadastrar Espa&#xe7;o"/>
@@ -47,11 +55,6 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemResEsp">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reservar Espa&#xe7;o"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemChkEsp">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Checar Espa&#xe7;o"/>
               </Properties>
             </MenuItem>
           </SubComponents>
