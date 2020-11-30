@@ -88,7 +88,7 @@
                               <Component id="jFormattedTextFieldEvenResp" max="32767" attributes="0"/>
                               <Component id="jFormattedTextFieldEvenNome" max="32767" attributes="0"/>
                               <Component id="jFormattedTextFieldEvenCmc" max="32767" attributes="0"/>
-                              <Component id="jComboBox1" alignment="0" pref="150" max="32767" attributes="0"/>
+                              <Component id="jComboBoxEvenEspaco" alignment="0" pref="150" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -127,7 +127,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelEvenEspaco" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBoxEvenEspaco" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jButton1" pref="39" max="32767" attributes="0"/>
@@ -198,7 +198,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="jComboBoxEvenEspaco">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">

@@ -47,7 +47,7 @@ public class CadEvento extends javax.swing.JFrame {
         jFormattedTextFieldEvenFim = new javax.swing.JFormattedTextField();
         jFormattedTextFieldEvenCap = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxEvenEspaco = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -92,7 +92,7 @@ public class CadEvento extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Espaço 1", "Espaço 2", "Espaço 3", "Espaço 4" }));
+        jComboBoxEvenEspaco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Espaço 1", "Espaço 2", "Espaço 3", "Espaço 4" }));
 
         javax.swing.GroupLayout jPanelCadEventoLayout = new javax.swing.GroupLayout(jPanelCadEvento);
         jPanelCadEvento.setLayout(jPanelCadEventoLayout);
@@ -117,7 +117,7 @@ public class CadEvento extends javax.swing.JFrame {
                             .addComponent(jFormattedTextFieldEvenResp)
                             .addComponent(jFormattedTextFieldEvenNome)
                             .addComponent(jFormattedTextFieldEvenCmc)
-                            .addComponent(jComboBox1, 0, 150, Short.MAX_VALUE))))
+                            .addComponent(jComboBoxEvenEspaco, 0, 150, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelCadEventoLayout.setVerticalGroup(
@@ -146,7 +146,7 @@ public class CadEvento extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelCadEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelEvenEspaco)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxEvenEspaco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
                 .addGap(16, 16, 16))
@@ -190,7 +190,7 @@ public class CadEvento extends javax.swing.JFrame {
         evenResp = jFormattedTextFieldEvenResp.getText();
         evenCmc = jFormattedTextFieldEvenCmc.getText();
         evenFim = jFormattedTextFieldEvenFim.getText();
-        evenEspaco = jComboBoxEvenEspaco.getSelectedItem().toString();
+        //evenEspaco = jComboBoxEvenEspaco.getSelectedItem().toString();
         evenCap = Integer.parseInt(jLabelEvenCap.getText());
         
         eventos.add(new Evento(evenNome, evenResp, evenCmc, evenFim, 200, espaco));
@@ -239,7 +239,7 @@ public class CadEvento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxEvenEspaco;
     private javax.swing.JFormattedTextField jFormattedTextFieldEvenCap;
     private javax.swing.JFormattedTextField jFormattedTextFieldEvenCmc;
     private javax.swing.JFormattedTextField jFormattedTextFieldEvenFim;

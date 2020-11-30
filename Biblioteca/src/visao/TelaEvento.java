@@ -127,7 +127,7 @@ public class TelaEvento extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSairGeralActionPerformed
 
     private void jMenuItemSairMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairMenuActionPerformed
-        TelaPrincipal tela = new TelaPrincipal();
+        TelaPrincipalAdmin tela = new TelaPrincipalAdmin();
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItemSairMenuActionPerformed
