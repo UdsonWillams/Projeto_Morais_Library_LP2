@@ -29,17 +29,21 @@ public class TelaEvento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jLabelBackground = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuEvento = new javax.swing.JMenu();
-        jMenuItemCadEv = new javax.swing.JMenuItem();
-        jMenuItemVerifEv = new javax.swing.JMenuItem();
+        jMenuItemListEven = new javax.swing.JMenuItem();
         jMenuItemImpEv = new javax.swing.JMenuItem();
-        jMenuItemExcEv = new javax.swing.JMenuItem();
         jMenuEspaço = new javax.swing.JMenu();
-        jMenuItemCadSalaEstudo = new javax.swing.JMenuItem();
-        jMenuItemCadEsp = new javax.swing.JMenuItem();
-        jMenuItemResEsp = new javax.swing.JMenuItem();
+        jMenuItemListEsp = new javax.swing.JMenuItem();
         jMenuSair = new javax.swing.JMenu();
         jMenuItemSairMenu = new javax.swing.JMenuItem();
         jMenuItemSairUser = new javax.swing.JMenuItem();
@@ -50,46 +54,109 @@ public class TelaEvento extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(600, 450));
         getContentPane().setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/UNIESP_LOGO.jpg"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, -110, 600, 600);
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton1.setText("Sair");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(10, 1510, 590, 49);
+
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton3.setText("Lista de Eventos");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(10, 80, 130, 30);
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton2.setText("Importar Evento");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(10, 120, 130, 30);
+
+        jButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton4.setText("Lista de Espaços");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4);
+        jButton4.setBounds(10, 160, 130, 30);
+
+        jButton6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton6.setText("Sala de Estudos");
+        getContentPane().add(jButton6);
+        jButton6.setBounds(10, 200, 130, 30);
+
+        jButton7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton7.setText("Voltar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7);
+        jButton7.setBounds(430, 350, 70, 23);
+
+        jButton8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton8.setText("Sair");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton8);
+        jButton8.setBounds(430, 380, 70, 23);
+
+        jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/UNIESP_LOGO.jpg"))); // NOI18N
+        getContentPane().add(jLabelBackground);
+        jLabelBackground.setBounds(-40, -100, 600, 600);
 
         jMenuEvento.setText("Eventos");
 
-        jMenuItemCadEv.setText("Cadastrar Eventos");
-        jMenuItemCadEv.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemListEven.setText("Lista de Eventos");
+        jMenuItemListEven.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemCadEvActionPerformed(evt);
+                jMenuItemListEvenActionPerformed(evt);
             }
         });
-        jMenuEvento.add(jMenuItemCadEv);
-
-        jMenuItemVerifEv.setText("Verificar Eventos");
-        jMenuEvento.add(jMenuItemVerifEv);
+        jMenuEvento.add(jMenuItemListEven);
 
         jMenuItemImpEv.setText("Importar Evento");
         jMenuEvento.add(jMenuItemImpEv);
-
-        jMenuItemExcEv.setText("Excluir Evento");
-        jMenuEvento.add(jMenuItemExcEv);
 
         jMenuBar1.add(jMenuEvento);
 
         jMenuEspaço.setText("Espaços");
 
-        jMenuItemCadSalaEstudo.setText("Cadastrar Sala de Estudo");
-        jMenuItemCadSalaEstudo.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemListEsp.setText("Lista de Espaços");
+        jMenuItemListEsp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemCadSalaEstudoActionPerformed(evt);
+                jMenuItemListEspActionPerformed(evt);
             }
         });
-        jMenuEspaço.add(jMenuItemCadSalaEstudo);
-
-        jMenuItemCadEsp.setText("Cadastrar Espaço");
-        jMenuEspaço.add(jMenuItemCadEsp);
-
-        jMenuItemResEsp.setText("Reservar Espaço");
-        jMenuEspaço.add(jMenuItemResEsp);
+        jMenuEspaço.add(jMenuItemListEsp);
 
         jMenuBar1.add(jMenuEspaço);
 
@@ -123,7 +190,7 @@ public class TelaEvento extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(616, 490));
+        setSize(new java.awt.Dimension(529, 475));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -144,16 +211,35 @@ public class TelaEvento extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItemSairUserActionPerformed
 
-    private void jMenuItemCadEvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadEvActionPerformed
-        CadEvento cadEvento = new CadEvento();
-        cadEvento.setVisible(true);
-    }//GEN-LAST:event_jMenuItemCadEvActionPerformed
+    private void jMenuItemListEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListEspActionPerformed
+        visaoEspaco janela = new visaoEspaco();
+        janela.setVisible(true);
+    }//GEN-LAST:event_jMenuItemListEspActionPerformed
 
-    private void jMenuItemCadSalaEstudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadSalaEstudoActionPerformed
-        CadEspaco cadEspaco = new CadEspaco();
-        cadEspaco.setVisible(true);
-        
-    }//GEN-LAST:event_jMenuItemCadSalaEstudoActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        visaoEspaco janela = new visaoEspaco();
+        janela.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        TelaPrincipalAdmin tela = new TelaPrincipalAdmin();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        visaoEvento tela = new visaoEvento();
+        tela.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jMenuItemListEvenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListEvenActionPerformed
+        visaoEvento tela = new visaoEvento();
+        tela.setVisible(true);
+    }//GEN-LAST:event_jMenuItemListEvenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,20 +278,24 @@ public class TelaEvento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JLabel jLabelBackground;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuEspaço;
     private javax.swing.JMenu jMenuEvento;
-    private javax.swing.JMenuItem jMenuItemCadEsp;
-    private javax.swing.JMenuItem jMenuItemCadEv;
-    private javax.swing.JMenuItem jMenuItemCadSalaEstudo;
-    private javax.swing.JMenuItem jMenuItemExcEv;
     private javax.swing.JMenuItem jMenuItemImpEv;
-    private javax.swing.JMenuItem jMenuItemResEsp;
+    private javax.swing.JMenuItem jMenuItemListEsp;
+    private javax.swing.JMenuItem jMenuItemListEven;
     private javax.swing.JMenuItem jMenuItemSairGeral;
     private javax.swing.JMenuItem jMenuItemSairMenu;
     private javax.swing.JMenuItem jMenuItemSairUser;
-    private javax.swing.JMenuItem jMenuItemVerifEv;
     private javax.swing.JMenu jMenuSair;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

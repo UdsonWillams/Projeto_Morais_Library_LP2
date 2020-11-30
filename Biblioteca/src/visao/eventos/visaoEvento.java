@@ -4,18 +4,25 @@
  * and open the template in the editor.
  */
 package visao.eventos;
+import controlador.EventoTableModel;
+import javax.swing.JOptionPane;
+import modelo.Evento;
 
 /**
  *
  * @author Leo
  */
 public class visaoEvento extends javax.swing.JFrame {
+    
+    EventoTableModel tableModel = new EventoTableModel();
 
     /**
      * Creates new form visaoEvento
      */
     public visaoEvento() {
         initComponents();
+        
+        jTEventos.setModel(tableModel);
     }
 
     /**
@@ -28,12 +35,12 @@ public class visaoEvento extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTEventos = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTEventos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -44,7 +51,7 @@ public class visaoEvento extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTEventos);
 
         jTextField1.setText("jTextField1");
 
@@ -111,7 +118,7 @@ public class visaoEvento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTEventos;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
