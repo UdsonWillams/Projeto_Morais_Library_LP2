@@ -61,9 +61,7 @@ public class EspacoTableModel extends AbstractTableModel{
         }
         
         this.fireTableRowsUpdated(linha, linha);
-    }
-    
-    
+    }   
     
     public void addRow(Espaco e){
         this.espacos.add(e);
