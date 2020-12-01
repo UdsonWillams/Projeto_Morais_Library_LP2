@@ -484,7 +484,7 @@ public class Biblioteca extends javax.swing.JFrame {
             return;
         }
         if(selectUsuario.getSelectedItem().toString().equals("Professor")) {
-            JOptionPane.showMessageDialog(null,"Professor cadastrado \ntempo do aluguel com 4 semanas");
+            JOptionPane.showMessageDialog(null,"Professor cadastrado \n LIMITE DE 8 LIVROS\n MULTA 1 REAL ");
              Usuario usuario = new Usuario(nomeUsuario, cpf, genero, telefone, email, endereco, 
                     cidade, categoria,tempo,vinculo, curso);
             
@@ -503,7 +503,7 @@ public class Biblioteca extends javax.swing.JFrame {
             
         }
         if(selectUsuario.getSelectedItem().toString().equals("Aluno")) {
-            JOptionPane.showMessageDialog(null,"Aluno cadastrado\n tempo do aluguel com 2 semanas");
+            JOptionPane.showMessageDialog(null,"Aluno cadastrado\n LIMITE DE 4 LIVROS \n MULTA 3 REAIS");
              Usuario usuario = new Usuario(nomeUsuario, cpf, genero, telefone, email, endereco, 
                     cidade, categoria,tempo,vinculo, curso);
             
@@ -521,7 +521,7 @@ public class Biblioteca extends javax.swing.JFrame {
             return;
         }
         if(selectUsuario.getSelectedItem().toString().equals("Membro Externo")) {
-            JOptionPane.showMessageDialog(null,"Membro Externo cadastrado \ntempo do aluguel com\n 1 semanas Taxa: R$ 5,00");
+            JOptionPane.showMessageDialog(null,"Membro Externo cadastrado \n LIMITE 3 LIVROS \n Taxa Semestral: R$ 30,00");
              Usuario usuario = new Usuario(nomeUsuario, cpf, genero, telefone, email, endereco, 
                     cidade, categoria,tempo,vinculo, curso);
             
