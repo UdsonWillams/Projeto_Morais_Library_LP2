@@ -16,6 +16,7 @@ public class Biblioteca extends javax.swing.JFrame {
     public String cidade = "";
     public String curso = "";
     public String categoria = "";
+    public String vinculo = "";
     public int tempo = 0;
     
     public String retornoNomes = "";
@@ -38,6 +39,7 @@ public class Biblioteca extends javax.swing.JFrame {
         txtEndereco.setText(null);
         txtCidade.setText(null);
         txtCurso.setText(null);
+        selectUsuario.setSelectedItem(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -77,6 +79,8 @@ public class Biblioteca extends javax.swing.JFrame {
         txtTelefone = new javax.swing.JFormattedTextField();
         txtEmail = new javax.swing.JTextField();
         btnSairCadastro = new javax.swing.JButton();
+        selectUsuario = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
         panResultado = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabelaCadastro = new javax.swing.JTable();
@@ -191,6 +195,11 @@ public class Biblioteca extends javax.swing.JFrame {
             }
         });
 
+        selectUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Professor", "Aluno", "Membro Externo" }));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel12.setText("Vinculo");
+
         javax.swing.GroupLayout panCadastroLayout = new javax.swing.GroupLayout(panCadastro);
         panCadastro.setLayout(panCadastroLayout);
         panCadastroLayout.setHorizontalGroup(
@@ -227,17 +236,23 @@ public class Biblioteca extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtEndereco))
-                    .addGroup(panCadastroLayout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(24, 24, 24)
-                        .addComponent(txtCurso)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panCadastroLayout.createSequentialGroup()
+                        .addGroup(panCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel12))
+                        .addGap(22, 22, 22)
+                        .addGroup(panCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCurso)
+                            .addGroup(panCadastroLayout.createSequentialGroup()
+                                .addComponent(selectUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(24, 24, 24))
             .addGroup(panCadastroLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(btnCadastro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnSairCadastro)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panCadastroLayout.setVerticalGroup(
             panCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,11 +291,15 @@ public class Biblioteca extends javax.swing.JFrame {
                 .addGroup(panCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addGap(29, 29, 29)
                 .addGroup(panCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastro)
                     .addComponent(btnSairCadastro))
-                .addGap(81, 81, 81))
+                .addGap(53, 53, 53))
         );
 
         panResultado.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado"));
@@ -459,10 +478,15 @@ public class Biblioteca extends javax.swing.JFrame {
         if (txtCurso.getText().equals("")) {
             JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n[CURSO,OBRIGATORIO!]");
             return;
-            
-        }else {
-            Usuario usuario = new Usuario(nomeUsuario, cpf, genero, telefone, email, endereco, 
-                    cidade, categoria, tempo, curso);
+        }
+        if (selectUsuario.getSelectedItem().toString().equals("")) {
+            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n[VINCULO,OBRIGATORIO!]");
+            return;
+        }
+        if(selectUsuario.getSelectedItem().toString().equals("Professor")) {
+            JOptionPane.showMessageDialog(null,"Professor cadastrado \ntempo do aluguel com 4 semanas");
+             Usuario usuario = new Usuario(nomeUsuario, cpf, genero, telefone, email, endereco, 
+                    cidade, categoria,tempo,vinculo, curso);
             
             usuario.setNome(txtNomeUsuario.getText());
             usuario.setCpf(txtCpf.getText());
@@ -472,6 +496,60 @@ public class Biblioteca extends javax.swing.JFrame {
             usuario.setEndereco(txtEndereco.getText());
             usuario.setCidade(txtCidade.getText());
             usuario.setCurso(txtCurso.getText());
+            usuario.setVinculo(selectUsuario.getSelectedItem().toString());
+            tableModel.addRow(usuario);
+            apagar();
+            return;
+            
+        }
+        if(selectUsuario.getSelectedItem().toString().equals("Aluno")) {
+            JOptionPane.showMessageDialog(null,"Aluno cadastrado\n tempo do aluguel com 2 semanas");
+             Usuario usuario = new Usuario(nomeUsuario, cpf, genero, telefone, email, endereco, 
+                    cidade, categoria,tempo,vinculo, curso);
+            
+            usuario.setNome(txtNomeUsuario.getText());
+            usuario.setCpf(txtCpf.getText());
+            usuario.setGenero(txtGenero.getSelectedItem().toString());
+            usuario.setTelefone(txtTelefone.getText());
+            usuario.setEmail(txtEmail.getText());
+            usuario.setEndereco(txtEndereco.getText());
+            usuario.setCidade(txtCidade.getText());
+            usuario.setCurso(txtCurso.getText());
+            usuario.setVinculo(selectUsuario.getSelectedItem().toString());
+            tableModel.addRow(usuario);
+            apagar();
+            return;
+        }
+        if(selectUsuario.getSelectedItem().toString().equals("Membro Externo")) {
+            JOptionPane.showMessageDialog(null,"Membro Externo cadastrado \ntempo do aluguel com\n 1 semanas Taxa: R$ 5,00");
+             Usuario usuario = new Usuario(nomeUsuario, cpf, genero, telefone, email, endereco, 
+                    cidade, categoria,tempo,vinculo, curso);
+            
+            usuario.setNome(txtNomeUsuario.getText());
+            usuario.setCpf(txtCpf.getText());
+            usuario.setGenero(txtGenero.getSelectedItem().toString());
+            usuario.setTelefone(txtTelefone.getText());
+            usuario.setEmail(txtEmail.getText());
+            usuario.setEndereco(txtEndereco.getText());
+            usuario.setCidade(txtCidade.getText());
+            usuario.setCurso(txtCurso.getText());
+            usuario.setVinculo(selectUsuario.getSelectedItem().toString());
+            tableModel.addRow(usuario);
+            apagar();
+        }
+        else {
+            Usuario usuario = new Usuario(nomeUsuario, cpf, genero, telefone, email, endereco, 
+                    cidade, categoria,tempo,vinculo, curso);
+            
+            usuario.setNome(txtNomeUsuario.getText());
+            usuario.setCpf(txtCpf.getText());
+            usuario.setGenero(txtGenero.getSelectedItem().toString());
+            usuario.setTelefone(txtTelefone.getText());
+            usuario.setEmail(txtEmail.getText());
+            usuario.setEndereco(txtEndereco.getText());
+            usuario.setCidade(txtCidade.getText());
+            usuario.setCurso(txtCurso.getText());
+            usuario.setVinculo(selectUsuario.getSelectedItem().toString());
        
             tableModel.addRow(usuario);
             apagar(); 
@@ -558,6 +636,7 @@ public class Biblioteca extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -574,6 +653,7 @@ public class Biblioteca extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JPanel panCadastro;
     private javax.swing.JPanel panResultado;
+    private javax.swing.JComboBox<String> selectUsuario;
     private javax.swing.JTable tabelaCadastro;
     private javax.swing.JTextArea txtAreaResultado;
     private javax.swing.JTextField txtCidade;

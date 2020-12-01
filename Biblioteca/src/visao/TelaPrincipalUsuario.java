@@ -35,7 +35,6 @@ public class TelaPrincipalUsuario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jButton1.setText("Aluguel de livros");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -65,11 +64,11 @@ public class TelaPrincipalUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(93, 93, 93)
+                .addGap(85, 85, 85)
                 .addComponent(jButton1)
-                .addGap(182, 182, 182)
+                .addGap(26, 26, 26)
                 .addComponent(jButton2)
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addContainerGap(418, Short.MAX_VALUE))
         );
 
         pack();

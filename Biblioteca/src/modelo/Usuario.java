@@ -11,12 +11,13 @@ public class Usuario {
     private String cidade;
     private String curso;
     private String categoria;
+    private String vinculo;
     private int tempo;
    
     
     public Usuario(String nome, String cpf, String genero, String telefone, String email,
             String endereco, String cidade,
-            String categoria,int tempo, String curso) {
+            String categoria,int tempo,String vinculo, String curso) {
         
         this.nome = nome;
         this.cpf = cpf;
@@ -28,6 +29,7 @@ public class Usuario {
         this.categoria = categoria;
         this.tempo = tempo;
         this.curso = curso;
+        this.vinculo = vinculo;
 }
     public Usuario() {}
 
@@ -108,12 +110,20 @@ public class Usuario {
         this.curso = curso;
     }
 
+    public String getVinculo() {
+        return vinculo;
+    }
+
+    public void setVinculo(String vinculo) {
+        this.vinculo = vinculo;
+    }
+    
     @Override
     public String toString() {
-        return "Usuario{" + "nome = " + nome + ", cpf = " + cpf + ", genero = " + genero +
-                ", telefone = " + telefone + ", email = " + email +
-                ", endereco = " + endereco + ", cidade = " + cidade + ", curso = " + curso + 
-                ", categoria = " + categoria + ", tempo = " + tempo + '}';
+        return "Usuario{" + "nome = " + this.nome + ", cpf = " + this.cpf + ", genero = " + this.genero +
+                ", telefone = " + this.telefone + ", email = " + this.email +
+                ", endereco = " + this.endereco + ", cidade = " + this.cidade + ", curso = " + this.curso + 
+                ", categoria = " + this.categoria + "vinculo = " + this.vinculo +"tempo = ," + this.tempo + '}';
     }
     
     
