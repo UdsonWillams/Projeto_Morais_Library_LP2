@@ -5,8 +5,11 @@
  */
 package visao.eventos;
 import controlador.EventoTableModel;
+import controlador.EspacoTableModel;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Evento;
+import modelo.Espaco;
 
 /**
  *
@@ -15,7 +18,12 @@ import modelo.Evento;
 public class visaoEvento extends javax.swing.JFrame {
     
     EventoTableModel tableModel = new EventoTableModel();
-
+    final int SIM = 0;
+    final int NAO = 1;
+    final int CANCELAR = 2;
+    ArrayList<String> listaEspaco = new ArrayList<>();
+    EspacoTableModel espacos = new EspacoTableModel();
+    
     /**
      * Creates new form visaoEvento
      */
@@ -23,6 +31,17 @@ public class visaoEvento extends javax.swing.JFrame {
         initComponents();
         
         jTEventos.setModel(tableModel);
+        
+        jBoxEspaco.removeAllItems();
+        
+        //Adicionando espaços para teste
+        Espaco e1 = new Espaco("Leo", 15);
+        Espaco e2 = new Espaco("Espaço 2", 20);
+        Espaco e3 = new Espaco("Espaço 3", 30);
+        jBoxEspaco.addItem(e1.toString());
+        jBoxEspaco.addItem(e2.toString());
+        jBoxEspaco.addItem(e3.toString());
+        
     }
 
     /**
@@ -45,10 +64,10 @@ public class visaoEvento extends javax.swing.JFrame {
         jLabelEsp = new javax.swing.JLabel();
         jTxtNomeEven = new javax.swing.JTextField();
         jTxtNomeResp = new javax.swing.JTextField();
-        jTxtEsp = new javax.swing.JTextField();
         jTxtCap = new javax.swing.JTextField();
         jTxtDataCmc = new javax.swing.JFormattedTextField();
         jTxtDataFim = new javax.swing.JFormattedTextField();
+        jBoxEspaco = new javax.swing.JComboBox<>();
         jBtSalvar = new javax.swing.JButton();
         jBtExcluir = new javax.swing.JButton();
         jBtAlterar = new javax.swing.JButton();
@@ -68,6 +87,11 @@ public class visaoEvento extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTEventos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTEventosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTEventos);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -84,12 +108,6 @@ public class visaoEvento extends javax.swing.JFrame {
 
         jLabelEsp.setText("Espaço:");
 
-        jTxtEsp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtEspActionPerformed(evt);
-            }
-        });
-
         try {
             jTxtDataCmc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -102,6 +120,13 @@ public class visaoEvento extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jBoxEspaco.setMaximumRowCount(20);
+        jBoxEspaco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBoxEspacoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -112,30 +137,28 @@ public class visaoEvento extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelNomeEven)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTxtNomeEven, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTxtNomeEven, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelNomeResp)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTxtNomeResp, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTxtNomeResp, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelDataFim)
                     .addComponent(jLabelDataCmc))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTxtDataCmc, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelCap)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTxtCap, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelEsp)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTxtEsp, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jTxtDataCmc, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTxtDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 46, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelEsp)
+                    .addComponent(jLabelCap))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTxtCap, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                    .addComponent(jBoxEspaco, 0, 90, Short.MAX_VALUE))
+                .addGap(93, 93, 93))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,11 +174,11 @@ public class visaoEvento extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTxtNomeResp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtEsp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelDataFim)
                     .addComponent(jLabelEsp)
                     .addComponent(jLabelNomeResp)
-                    .addComponent(jTxtDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBoxEspaco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -214,7 +237,7 @@ public class visaoEvento extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -244,29 +267,75 @@ public class visaoEvento extends javax.swing.JFrame {
                 .addComponent(jBtVoltar))
         );
 
-        setSize(new java.awt.Dimension(698, 578));
+        setSize(new java.awt.Dimension(754, 578));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTxtEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtEspActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtEspActionPerformed
-
+    
+    
     private void jBtSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtSalvarActionPerformed
-        //tableModel.addRow(e);
+        String nomeEven = jTxtNomeEven.getText();
+        String nomeResp = jTxtNomeResp.getText();
+        String dataCmc = jTxtDataCmc.getText();
+        String dataFim = jTxtDataFim.getText();
+        int capacidade = Integer.parseInt(jTxtCap.getText());
+        String espaco = (String) jBoxEspaco.getSelectedItem();
+        Evento e = new Evento(nomeEven, nomeResp, dataCmc, dataFim, capacidade, espaco);
+        tableModel.addRow(e);
+        JOptionPane.showMessageDialog(null, "Evento cadastrado com sucesso!");
+        
     }//GEN-LAST:event_jBtSalvarActionPerformed
 
     private void jBtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtExcluirActionPerformed
-        // TODO add your handling code here:
+        if(jTEventos.getSelectedRow() != -1){
+            switch(JOptionPane.showConfirmDialog(null,"Você confirma a exclusão desse evento?")){
+                case SIM:
+                    tableModel.removeRow(jTEventos.getSelectedRow());
+                    JOptionPane.showMessageDialog(null, "Evento deletado com sucesso!");
+                    break;
+                case NAO:;
+                case CANCELAR:
+                    break;            
+            }
+        }
     }//GEN-LAST:event_jBtExcluirActionPerformed
 
     private void jBtAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtAlterarActionPerformed
-        // TODO add your handling code here:
+        if(jTEventos.getSelectedRow() != -1){
+            switch (JOptionPane.showConfirmDialog(null, "Você confirma a alteração dos dados?")) {
+            case SIM:
+                tableModel.setValueAt(jTxtNomeEven.getText(), jTEventos.getSelectedRow(), 0);  
+                tableModel.setValueAt(jTxtNomeResp.getText(), jTEventos.getSelectedRow(), 1);
+                tableModel.setValueAt(jTxtDataCmc.getText(), jTEventos.getSelectedRow(), 2);
+                tableModel.setValueAt(jTxtDataFim.getText(), jTEventos.getSelectedRow(), 3);
+                tableModel.setValueAt(jTxtCap.getText(), jTEventos.getSelectedRow(), 4);
+                tableModel.setValueAt(jTxtEsp.getText(), jTEventos.getSelectedRow(), 5);
+                JOptionPane.showMessageDialog(null, "Evento alterado com sucesso!");
+                break;
+            case NAO:;
+            case CANCELAR:
+                break;
+            }
+        }
     }//GEN-LAST:event_jBtAlterarActionPerformed
 
     private void jBtVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtVoltarActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jBtVoltarActionPerformed
+
+    private void jTEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTEventosMouseClicked
+        if(jTEventos.getSelectedRow() != -1){
+            jTxtNomeEven.setText((String) tableModel.getValueAt(jTEventos.getSelectedRow(), 0));
+            jTxtNomeResp.setText((String) tableModel.getValueAt(jTEventos.getSelectedRow(), 1));
+            jTxtDataCmc.setText((String) tableModel.getValueAt(jTEventos.getSelectedRow(), 2));
+            jTxtDataFim.setText((String) tableModel.getValueAt(jTEventos.getSelectedRow(), 3));
+            jTxtCap.setText((String) tableModel.getValueAt(jTEventos.getSelectedRow(), 4).toString());
+            jTxtEsp.setText((String) tableModel.getValueAt(jTEventos.getSelectedRow(), 5));
+        }
+    }//GEN-LAST:event_jTEventosMouseClicked
+
+    private void jBoxEspacoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBoxEspacoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBoxEspacoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -304,6 +373,7 @@ public class visaoEvento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jBoxEspaco;
     private javax.swing.JButton jBtAlterar;
     private javax.swing.JButton jBtExcluir;
     private javax.swing.JButton jBtSalvar;
@@ -320,7 +390,6 @@ public class visaoEvento extends javax.swing.JFrame {
     private javax.swing.JTextField jTxtCap;
     private javax.swing.JFormattedTextField jTxtDataCmc;
     private javax.swing.JFormattedTextField jTxtDataFim;
-    private javax.swing.JTextField jTxtEsp;
     private javax.swing.JTextField jTxtNomeEven;
     private javax.swing.JTextField jTxtNomeResp;
     // End of variables declaration//GEN-END:variables

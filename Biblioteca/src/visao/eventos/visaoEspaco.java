@@ -49,6 +49,7 @@ public class visaoEspaco extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Janela de Espaços");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -197,6 +198,7 @@ public class visaoEspaco extends javax.swing.JFrame {
         }else{
             Espaco e = new Espaco(jTxtNome.getText(), Float.parseFloat(jTxtArea.getText()));
             tableModel.addRow(e);
+            JOptionPane.showMessageDialog(null, "Espaço cadastrado com sucesso!");
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 

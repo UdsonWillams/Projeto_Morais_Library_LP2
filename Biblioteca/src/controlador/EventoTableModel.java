@@ -26,6 +26,12 @@ public class EventoTableModel extends AbstractTableModel{
     private final String[] colunas = {"Nome", "Responsável", "Início", 
                                 "Término", "Capacidade", "Espaço"};
 
+    EspacoTableModel espaco = new EspacoTableModel();
+    int tamanho = espaco.getRowCount();
+    ArrayList<String> listEspaco = new ArrayList<>();
+    
+    
+    
     @Override
     public String getColumnName(int column) {
         return colunas[column];
@@ -83,6 +89,7 @@ public class EventoTableModel extends AbstractTableModel{
                 eventos.get(linha).setCapacidade(Integer.parseInt((String) valor));
                 break;
             case ESPACO_INDEX:
+                eventos.get(linha).setEspaco((String) valor);
                 break;
         }
                 
@@ -98,6 +105,14 @@ public class EventoTableModel extends AbstractTableModel{
     public void removeRow(int linha){
         this.eventos.remove(linha);
         fireTableRowsDeleted(linha, linha);
+    }
+    
+    //criando uma lista com o nome dos espaços
+    public ArrayList getEspaco(){
+        for (int i=0;i<tamanho;i++){
+           listEspaco.add(espaco.getItem(i));
+        }
+        return listEspaco;
     }
     
 }

@@ -73,4 +73,10 @@ public class EspacoTableModel extends AbstractTableModel{
         fireTableRowsDeleted(linha, linha);
     }
     
+    //retorna o toString do objeto Espaço
+    public String getItem(int index){
+        return espacos.get(index).toString();
+    }
+    
+    
 }
