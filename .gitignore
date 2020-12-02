@@ -2,3 +2,4 @@
 /Biblioteca/build/
 /Biblioteca/dist/
 *.class
+Biblioteca/nbproject/private/private.xml
