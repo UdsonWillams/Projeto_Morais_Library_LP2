@@ -122,6 +122,7 @@ public class Biblioteca extends javax.swing.JFrame {
         jLabel2.setText("Cadastrar novos Úsuarios");
 
         btnCadastrarUsuario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnCadastrarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/crie-um-novo-32.png"))); // NOI18N
         btnCadastrarUsuario.setText("Cadastrar ");
         btnCadastrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -433,14 +434,14 @@ public class Biblioteca extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3))
-                                .addGap(108, 108, 108)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnCadastrarUsuario)
-                                    .addComponent(btnVisualizar)))
+                                .addGap(68, 68, 68)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnVisualizar)
+                                    .addComponent(btnCadastrarUsuario)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(287, 287, 287)
                                 .addComponent(jLabel1)))
-                        .addGap(18, 18, 18)
+                        .addGap(58, 58, 58)
                         .addComponent(btnVoltaMenu)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -465,7 +466,7 @@ public class Biblioteca extends javax.swing.JFrame {
                 .addComponent(panCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(panResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();

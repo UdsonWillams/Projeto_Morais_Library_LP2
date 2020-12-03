@@ -50,14 +50,18 @@ public class TelaInicial extends javax.swing.JFrame {
         btnLogin.setBounds(100, 110, 100, 40);
 
         btnSobre.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
+        btnSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/informações-32.png"))); // NOI18N
         btnSobre.setText("Sobre");
+        btnSobre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnSobre.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnSobre.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnSobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSobreActionPerformed(evt);
             }
         });
         getContentPane().add(btnSobre);
-        btnSobre.setBounds(440, 360, 120, 25);
+        btnSobre.setBounds(440, 350, 101, 40);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
