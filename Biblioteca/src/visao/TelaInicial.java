@@ -83,7 +83,7 @@ public class TelaInicial extends javax.swing.JFrame {
                 + "Desenvolvedores: \n"
                 + "Anderson Souza \n"
                 + "Leonardo Donato \n"
-                + "Udson Willians"
+                + "Udson Willians \n"
                 + "Ano do Projeto: 2020 \n"
                 + "Curso: Sistemas Para Internet \n"
                 + "Periodo do curso: 2° Periodo \n");
