@@ -21,7 +21,10 @@ public class Biblioteca extends javax.swing.JFrame {
     
     public String retornoNomes = "";
     
-    TableModel tableModel = new TableModel();
+    public TableModel tableModel = new TableModel();
+    
+    public Usuario alunoOne = new Usuario("Pedro José","555.987.234-56","Masculino","(83)99958-4423","PedroJose@gmail.com",
+                "Rua projetada","João Pessoa","aaaaa",3,"Aluno","Farmacia");
   
     public Biblioteca() {
         initComponents();
@@ -325,7 +328,7 @@ public class Biblioteca extends javax.swing.JFrame {
                     .addComponent(jLabel12)
                     .addComponent(selectUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCadastro)
                     .addComponent(btnSairCadastro))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

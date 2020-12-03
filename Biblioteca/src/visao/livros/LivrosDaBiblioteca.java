@@ -10,10 +10,10 @@ public class LivrosDaBiblioteca {
     
     ArrayList<Livro> livros = new ArrayList<Livro>();
     
-        Livro biblia = new Livro("a biblia", "eletronico", "JC", "N sei", 2000, 0);
-        Livro matematica = new Livro("naruto", "fisico", "udson", "N sei", 1990, 5);
-        Livro ingles = new Livro("o ingles", "fisico", "joao", "N sei", 2010, 3);
-        Livro joao = new Livro("joao doido", "fisico", "joseph", "N sei", 2010, 3);
+        Livro biblia = new Livro("biblia", "eletronico", "JC", "N sei", 2000, 0, "nao");
+        Livro matematica = new Livro("naruto", "fisico", "udson", "N sei", 1990, 5, "nao");
+        Livro ingles = new Livro("o ingles", "fisico", "joao", "N sei", 2010, 3, "nao");
+        Livro joao = new Livro("joao doido", "fisico", "joseph", "N sei", 2010, 3, "nao");
         
     public LivrosDaBiblioteca(){
         
@@ -23,4 +23,3 @@ public class LivrosDaBiblioteca {
         livros.add(joao);
     }
 }
-

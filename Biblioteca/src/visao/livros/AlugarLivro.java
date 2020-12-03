@@ -1,9 +1,13 @@
 package visao.livros;
 
+import controlador.TableModel;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.Livro;
+import modelo.Usuario;
+import visao.Biblioteca;
+import visao.TelaLogin;
 
 /**
  *
@@ -11,26 +15,21 @@ import modelo.Livro;
  */
 public class AlugarLivro extends javax.swing.JFrame {
     
-    LivrosDaBiblioteca validador = new LivrosDaBiblioteca();
+        LivrosDaBiblioteca validador = new LivrosDaBiblioteca();
         int i;
+        int a;
         ArrayList<Livro> teste2 = new ArrayList<Livro>();
         Livro teste = new Livro();
         Livro mudar = new Livro();
         
-    /* ArrayList<Livro> livros = new ArrayList<Livro>();
-    
-        Livro biblia = new Livro("a biblia", "eletronico", "JC", "N sei", 2000, 0);
-        Livro matematica = new Livro("naruto", "fisico", "udson", "N sei", 1990, 5);
-        Livro ingles = new Livro("o ingles", "fisico", "joao", "N sei", 2010, 3); */
-              
-    
-    public AlugarLivro() {
+        Biblioteca usuariosB = new Biblioteca();
+        Usuario usuario = new Usuario();
         
-        teste2 = validador.livros;
+        TableModel usuariosTabela = new TableModel();
         
-        /* livros.add(biblia);
-        livros.add(matematica);
-        livros.add(ingles);  */     
+                          
+    public AlugarLivro() {        
+        teste2 = validador.livros;  
         
         initComponents();
         this.setLocationRelativeTo(null);
@@ -51,6 +50,7 @@ public class AlugarLivro extends javax.swing.JFrame {
         aluguelNomeUsario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        botaoAlugar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Aluguel de Livros");
@@ -86,20 +86,17 @@ public class AlugarLivro extends javax.swing.JFrame {
             }
         });
 
+        botaoAlugar.setText("Alugar");
+        botaoAlugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAlugarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(178, 178, 178)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(aluguelNomeUsario, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nomeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(189, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,7 +105,20 @@ public class AlugarLivro extends javax.swing.JFrame {
                         .addGap(169, 169, 169))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(28, 28, 28))))
+                        .addGap(18, 18, 18))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(178, 178, 178)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botaoAlugar)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(aluguelNomeUsario, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nomeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,7 +133,9 @@ public class AlugarLivro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(aluguelNomeUsario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
+                .addComponent(botaoAlugar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -133,16 +145,17 @@ public class AlugarLivro extends javax.swing.JFrame {
 
     private void nomeLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeLivroActionPerformed
                                         
-        int tamanhoLivros = teste2.size();
-        
+        /* int tamanhoLivros = teste2.size();                                 
+                
         if (nomeLivro.getText().equals("") && aluguelNomeUsario.getText().equals("")){
             JOptionPane.showMessageDialog(null,"DIGITE VALORES VALIDOS");
         }
         
-        else if(aluguelNomeUsario.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"DIGITE O NOME DO USUARIO");
-        }
         
+        /*else if(aluguelNomeUsario.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"DIGITE O NOME DO USUARIO");
+        }*/
+        /*
         else{                   
             for (i = 0; i < tamanhoLivros; i++){
 
@@ -172,7 +185,7 @@ public class AlugarLivro extends javax.swing.JFrame {
                     }                
                 }                
             }                        
-        }
+        } */
     }//GEN-LAST:event_nomeLivroActionPerformed
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
            
@@ -182,9 +195,53 @@ public class AlugarLivro extends javax.swing.JFrame {
     }//GEN-LAST:event_aluguelNomeUsarioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-              
-       this.dispose();                   
+        this.dispose();                   
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void botaoAlugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlugarActionPerformed
+        int tamanhoLivros = teste2.size();
+        
+        String nomeUsarios;
+        String nome;
+        usuario = usuariosB.alunoOne;
+        usuariosTabela = usuariosB.tableModel;
+        int tamanhoUsuarios = 2; // = usuariosTabela.
+        nome = aluguelNomeUsario.getText();
+        
+        
+        if (nomeLivro.getText().equals("") && aluguelNomeUsario.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"DIGITE VALORES VALIDOS");
+        }
+        else{                   
+            for (a = 0; a < tamanhoUsuarios; a++){
+                nomeUsarios = (String) usuariosTabela.getValueAt(a, NORMAL);                
+                System.out.println(nomeUsarios);
+                for (i = 0; i < tamanhoLivros; i++){
+
+                    teste = teste2.get(i);                        
+
+                    if (nomeLivro.getText().equals(teste.getNomeDoLivro())){                    
+                        int quantidade = teste.getQuantidadeLivros();
+
+                        if (teste.getTipoDoLivro().equals("eletronico")){
+                            JOptionPane.showMessageDialog(null,"LIVRO DIGITAL, NAO PODE SER ALUGADO");
+                        }                        
+                        else if (teste.getTipoDoLivro().equals("fisico") && quantidade > 0 && nome.equals(nomeUsarios)){
+                            int novaQuantidade = teste.getQuantidadeLivros() - 1;
+                            teste.setQuantidadeLivros(novaQuantidade);
+                            validador.livros.set(i, teste);
+                             if (quantidade > 1){
+                                JOptionPane.showMessageDialog(null,"LIVRO ALUGADO PARA " + nomeUsarios.toUpperCase() + " POR 7 DIAS");
+                                }                        
+                            else {
+                                JOptionPane.showMessageDialog(null,"ULTIMO EXEMPLAR DA BIBLIOTECA ALUGADO PARA " + nome.toUpperCase() + " POR 3 DIAS");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_botaoAlugarActionPerformed
     public static void main(String args[]) {        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -194,6 +251,7 @@ public class AlugarLivro extends javax.swing.JFrame {
     }        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField aluguelNomeUsario;
+    private javax.swing.JButton botaoAlugar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
