@@ -20,7 +20,9 @@ public class Biblioteca extends javax.swing.JFrame {
     public int tempo = 0;
     
     public String retornoNomes = "";
-    
+    final int SIM = 0;
+    final int NAO = 1;
+    final int CANCELAR = 2;
     public TableModel tableModel = new TableModel();        
   
     public Biblioteca() {
@@ -42,13 +44,13 @@ public class Biblioteca extends javax.swing.JFrame {
     }
       
     public void apagar() {
-        txtNomeUsuario.setText(null);
+        txtCidade.setText(null);
         txtCpf.setText(null);
         txtGenero.setSelectedItem(null);
         txtTelefone.setText(null);
         txtEmail.setText(null);
         txtEndereco.setText(null);
-        txtCidade.setText(null);
+        txtNomeUsuario.setText(null);
         txtCurso.setText(null);
         selectUsuario.setSelectedItem(null);
     }
@@ -73,13 +75,13 @@ public class Biblioteca extends javax.swing.JFrame {
         btnVisualizar = new javax.swing.JButton();
         panCadastro = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        txtNomeUsuario = new javax.swing.JTextField();
+        txtCidade = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtEndereco = new javax.swing.JTextField();
-        txtCidade = new javax.swing.JTextField();
+        txtNomeUsuario = new javax.swing.JTextField();
         btnCadastro = new javax.swing.JButton();
         txtCurso = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -120,6 +122,7 @@ public class Biblioteca extends javax.swing.JFrame {
         jLabel2.setText("Cadastrar novos Úsuarios");
 
         btnCadastrarUsuario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnCadastrarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/crie-um-novo-32.png"))); // NOI18N
         btnCadastrarUsuario.setText("Cadastrar ");
         btnCadastrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,6 +162,12 @@ public class Biblioteca extends javax.swing.JFrame {
         txtEndereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEnderecoActionPerformed(evt);
+            }
+        });
+
+        txtNomeUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeUsuarioActionPerformed(evt);
             }
         });
 
@@ -255,7 +264,7 @@ public class Biblioteca extends javax.swing.JFrame {
                         .addGroup(panCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panCadastroLayout.createSequentialGroup()
                                 .addGroup(panCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panCadastroLayout.createSequentialGroup()
@@ -269,7 +278,7 @@ public class Biblioteca extends javax.swing.JFrame {
                                     .addGroup(panCadastroLayout.createSequentialGroup()
                                         .addGroup(panCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(panCadastroLayout.createSequentialGroup()
-                                                .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jLabel5)
                                                 .addGap(33, 33, 33))
@@ -311,7 +320,7 @@ public class Biblioteca extends javax.swing.JFrame {
                             .addComponent(jLabel6)))
                     .addGroup(panCadastroLayout.createSequentialGroup()
                         .addGroup(panCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addGap(94, 94, 94)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -319,7 +328,7 @@ public class Biblioteca extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(txtCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
@@ -425,14 +434,14 @@ public class Biblioteca extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3))
-                                .addGap(108, 108, 108)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnCadastrarUsuario)
-                                    .addComponent(btnVisualizar)))
+                                .addGap(68, 68, 68)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnVisualizar)
+                                    .addComponent(btnCadastrarUsuario)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(287, 287, 287)
                                 .addComponent(jLabel1)))
-                        .addGap(18, 18, 18)
+                        .addGap(58, 58, 58)
                         .addComponent(btnVoltaMenu)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -457,7 +466,7 @@ public class Biblioteca extends javax.swing.JFrame {
                 .addComponent(panCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(panResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -500,7 +509,7 @@ public class Biblioteca extends javax.swing.JFrame {
             return;
         }
         if(txtEmail.getText().equals("")) {
-            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n[TELEFONE,OBRIGATORIO!]");
+            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n[EMAIL,OBRIGATORIO!]");
             return;
         }
         if(txtEndereco.getText().equals("")) {
@@ -577,13 +586,13 @@ public class Biblioteca extends javax.swing.JFrame {
             Usuario usuario = new Usuario(nomeUsuario, cpf, genero, telefone, email, endereco, 
                     cidade, categoria,tempo,vinculo, curso);
             
-            usuario.setNome(txtNomeUsuario.getText());
+            usuario.setNome(txtCidade.getText());
             usuario.setCpf(txtCpf.getText());
             usuario.setGenero(txtGenero.getSelectedItem().toString());
             usuario.setTelefone(txtTelefone.getText());
             usuario.setEmail(txtEmail.getText());
             usuario.setEndereco(txtEndereco.getText());
-            usuario.setCidade(txtCidade.getText());
+            usuario.setCidade(txtNomeUsuario.getText());
             usuario.setCurso(txtCurso.getText());
             usuario.setVinculo(selectUsuario.getSelectedItem().toString());
        
@@ -606,13 +615,21 @@ public class Biblioteca extends javax.swing.JFrame {
 
     private void btnRemoveUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveUsuarioActionPerformed
         // TODO add your handling code here:
-        
          if(tabelaCadastro.getSelectedRow() != -1){
+            switch(JOptionPane.showConfirmDialog(null,"Tem certeza que deseja \n excluir esse usuário?")) {
+                case SIM:
+                    tableModel.remover(tabelaCadastro.getSelectedRow());
+                    JOptionPane.showMessageDialog(null, "Usuário excluido com sucesso!");
+                    break;
+                case NAO:;
+                case CANCELAR:
+                    break;       
+            }
             
-            tableModel.remover(tabelaCadastro.getSelectedRow());
-        }else {
+         }else {
             JOptionPane.showMessageDialog(null,"Selecione uma das linha \n da Tabela para ser Excluida!");
         }
+             
     }//GEN-LAST:event_btnRemoveUsuarioActionPerformed
 
     private void btnSairTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairTabelaActionPerformed
@@ -630,6 +647,10 @@ public class Biblioteca extends javax.swing.JFrame {
     private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCpfActionPerformed
+
+    private void txtNomeUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeUsuarioActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
