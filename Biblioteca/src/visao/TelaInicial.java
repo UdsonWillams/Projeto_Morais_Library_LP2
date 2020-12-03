@@ -61,7 +61,7 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSobre);
-        btnSobre.setBounds(440, 350, 101, 40);
+        btnSobre.setBounds(440, 360, 110, 40);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -87,7 +87,7 @@ public class TelaInicial extends javax.swing.JFrame {
                 + "Desenvolvedores: \n"
                 + "Anderson Souza \n"
                 + "Leonardo Donato \n"
-                + "Udson Willians \n"
+                + "Udson Willams \n"
                 + "Ano do Projeto: 2020 \n"
                 + "Curso: Sistemas Para Internet \n"
                 + "Periodo do curso: 2° Periodo \n");

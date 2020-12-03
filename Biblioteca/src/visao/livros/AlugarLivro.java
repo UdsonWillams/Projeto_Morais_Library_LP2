@@ -93,7 +93,7 @@ public class AlugarLivro extends javax.swing.JFrame {
             }
         });
 
-        reservarLivro.setText("Reservar Livros");
+        reservarLivro.setText("Reservar Livro");
         reservarLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reservarLivroActionPerformed(evt);
@@ -284,7 +284,7 @@ public class AlugarLivro extends javax.swing.JFrame {
                                 JOptionPane.showMessageDialog(null,"LIVRO RESERVADO PARA " + nomeUsarios.toUpperCase() + " POR 7 DIAS");
                                 }                        
                             else {
-                                JOptionPane.showMessageDialog(null,"ULTIMO EXEMPLAR DA BIBLIOTECA NÃO PODE SER RESERVADO PARA ");
+                                JOptionPane.showMessageDialog(null,"ULTIMO EXEMPLAR DA BIBLIOTECA NÃO PODE SER RESERVADO");
                             }
                         }
                     }

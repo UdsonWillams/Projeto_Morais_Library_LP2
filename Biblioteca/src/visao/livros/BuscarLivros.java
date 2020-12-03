@@ -126,7 +126,7 @@ public class BuscarLivros extends javax.swing.JFrame {
         
             validador = teste2.get(i);
             if (validador.getTipoDoLivro().equals("eletronico")){                                                                      
-                mostrarLivros.addElement(validador.getNomeDoLivro().toUpperCase());
+                mostrarLivros.addElement("Nome do Livro: " + validador.getNomeDoLivro().toUpperCase());
                 mostrar.setModel(mostrarLivros);                
             }
         }

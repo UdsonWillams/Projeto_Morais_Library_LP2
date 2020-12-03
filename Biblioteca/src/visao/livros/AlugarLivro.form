@@ -140,7 +140,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="reservarLivro">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Reservar Livros"/>
+        <Property name="text" type="java.lang.String" value="Reservar Livro"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reservarLivroActionPerformed"/>
