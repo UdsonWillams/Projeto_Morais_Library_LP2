@@ -21,10 +21,7 @@ public class Biblioteca extends javax.swing.JFrame {
     
     public String retornoNomes = "";
     
-    public TableModel tableModel = new TableModel();
-    
-    public Usuario alunoOne = new Usuario("Pedro José","555.987.234-56","Masculino","(83)99958-4423","PedroJose@gmail.com",
-                "Rua projetada","João Pessoa","aaaaa",3,"Aluno","Farmacia");
+    public TableModel tableModel = new TableModel();        
   
     public Biblioteca() {
         initComponents();

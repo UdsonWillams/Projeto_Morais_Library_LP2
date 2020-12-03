@@ -22,8 +22,7 @@ public class AlugarLivro extends javax.swing.JFrame {
         Livro teste = new Livro();
         Livro mudar = new Livro();
         
-        Biblioteca usuariosB = new Biblioteca();
-        Usuario usuario = new Usuario();
+        Biblioteca usuariosB = new Biblioteca();       
         
         TableModel usuariosTabela = new TableModel();
         
@@ -51,6 +50,7 @@ public class AlugarLivro extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         botaoAlugar = new javax.swing.JButton();
+        reservarLivro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Aluguel de Livros");
@@ -93,6 +93,13 @@ public class AlugarLivro extends javax.swing.JFrame {
             }
         });
 
+        reservarLivro.setText("Reservar");
+        reservarLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reservarLivroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,7 +116,7 @@ public class AlugarLivro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(178, 178, 178)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botaoAlugar)
+                    .addComponent(reservarLivro)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1)
@@ -117,7 +124,8 @@ public class AlugarLivro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(aluguelNomeUsario, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nomeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(nomeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(botaoAlugar))
                 .addContainerGap(189, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -133,9 +141,11 @@ public class AlugarLivro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(aluguelNomeUsario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botaoAlugar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addGap(11, 11, 11)
+                .addComponent(reservarLivro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -195,15 +205,14 @@ public class AlugarLivro extends javax.swing.JFrame {
     }//GEN-LAST:event_aluguelNomeUsarioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();                   
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void botaoAlugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlugarActionPerformed
         int tamanhoLivros = teste2.size();
         
         String nomeUsarios;
-        String nome;
-        usuario = usuariosB.alunoOne;
+        String nome;      
         usuariosTabela = usuariosB.tableModel;
         int tamanhoUsuarios = 2; // = usuariosTabela.
         nome = aluguelNomeUsario.getText();
@@ -214,8 +223,7 @@ public class AlugarLivro extends javax.swing.JFrame {
         }
         else{                   
             for (a = 0; a < tamanhoUsuarios; a++){
-                nomeUsarios = (String) usuariosTabela.getValueAt(a, NORMAL);                
-                System.out.println(nomeUsarios);
+                nomeUsarios = (String) usuariosTabela.getValueAt(a, NORMAL);                                
                 for (i = 0; i < tamanhoLivros; i++){
 
                     teste = teste2.get(i);                        
@@ -242,6 +250,48 @@ public class AlugarLivro extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_botaoAlugarActionPerformed
+
+    private void reservarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservarLivroActionPerformed
+        int tamanhoLivros = teste2.size();
+        String nomeUsarios;
+        String nome;      
+        usuariosTabela = usuariosB.tableModel;
+        int tamanhoUsuarios = 2;
+        nome = aluguelNomeUsario.getText();
+        
+                if (nomeLivro.getText().equals("") && aluguelNomeUsario.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"DIGITE VALORES VALIDOS");
+        }
+        else{                   
+            for (a = 0; a < tamanhoUsuarios; a++){
+                nomeUsarios = (String) usuariosTabela.getValueAt(a, NORMAL);                                
+                for (i = 0; i < tamanhoLivros; i++){
+
+                    teste = teste2.get(i);                        
+
+                    if (nomeLivro.getText().equals(teste.getNomeDoLivro())){                    
+                        int quantidade = teste.getQuantidadeLivros();
+
+                        if (teste.getTipoDoLivro().equals("eletronico")){
+                            JOptionPane.showMessageDialog(null,"LIVRO DIGITAL, NAO PODE SER RESERVADO");
+                        }                        
+                        else if (teste.getTipoDoLivro().equals("fisico") && quantidade > 0 && nome.equals(nomeUsarios)){
+                            int novaQuantidade = teste.getQuantidadeLivros() - 1;
+                            teste.setQuantidadeLivros(novaQuantidade);
+                            validador.livros.set(i, teste);
+                             if (quantidade > 1){
+                                JOptionPane.showMessageDialog(null,"LIVRO RESERVADO PARA " + nomeUsarios.toUpperCase() + " POR 7 DIAS");
+                                }                        
+                            else {
+                                JOptionPane.showMessageDialog(null,"ULTIMO EXEMPLAR DA BIBLIOTECA NÃO PODE SER RESERVADO PARA ");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }//GEN-LAST:event_reservarLivroActionPerformed
     public static void main(String args[]) {        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -258,5 +308,6 @@ public class AlugarLivro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JTextField nomeLivro;
+    private javax.swing.JButton reservarLivro;
     // End of variables declaration//GEN-END:variables
 }
