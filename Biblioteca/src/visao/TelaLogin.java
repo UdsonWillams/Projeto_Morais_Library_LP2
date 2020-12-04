@@ -1,4 +1,6 @@
 package visao;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class TelaLogin extends javax.swing.JFrame {
@@ -6,6 +8,7 @@ public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
         initComponents();                   
         this.setLocationRelativeTo(null);
+        
     }
     
     @SuppressWarnings("unchecked")
@@ -102,22 +105,24 @@ public class TelaLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(this.loginAdmin(txtLogin.getText(), new String(txtSenha.getPassword()))){
             
-                
-            JOptionPane.showMessageDialog(null,"SEJA BEM VINDO\n FUNCIONARIO");
+            Icon loginCerto = new ImageIcon(getClass().getResource("/img/pin-ok-32.png"));  
+            JOptionPane.showMessageDialog(null,"SEJA BEM VINDO\n FUNCIONARIO","FUNCIONARIO",JOptionPane.INFORMATION_MESSAGE,loginCerto);
             TelaPrincipalAdmin telaPrincipal = new TelaPrincipalAdmin();
             telaPrincipal.setVisible(true);
             dispose();            
             return;            
         }
         if(this.loginUsuario(txtLogin.getText(), new String(txtSenha.getPassword()))) {
-           
-            JOptionPane.showMessageDialog(null,"SEJA BEM VINDO\n USUÁRIO");
+            
+            Icon loginCertoUsuario = new ImageIcon(getClass().getResource("/img/pin-ok-32.png"));  
+            JOptionPane.showMessageDialog(null,"SEJA BEM VINDO\n USUÁRIO","USUÁRIO",JOptionPane.INFORMATION_MESSAGE,loginCertoUsuario);
             TelaPrincipalUsuario telaPrincipal = new TelaPrincipalUsuario();
             telaPrincipal.setVisible(true);
             dispose();            
         }
         else {
-            JOptionPane.showMessageDialog(null,"SENHA OU LOGIN INVÁLIDO");
+            Icon erroLogin = new ImageIcon(getClass().getResource("/img/pin-errado-32.png"));
+            JOptionPane.showMessageDialog(null,"SENHA OU LOGIN INVÁLIDO","ERRO L0GIN",JOptionPane.INFORMATION_MESSAGE,erroLogin);
             
         }        
     }//GEN-LAST:event_jButton1ActionPerformed
