@@ -5,6 +5,8 @@
  */
 package visao;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -79,6 +81,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void btnSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSobreActionPerformed
         // TODO add your handling code here:
+        Icon painel = new ImageIcon(getClass().getResource("/iconMensagem/painel-32.png"));
         JOptionPane.showMessageDialog(null,"Essa aplicação foi proposta \n "
                 + "com o intuito de promover o aprendizado tendo como  \n referência ao programa já existente  \n "
                 + "da UNIESP \n"
@@ -90,7 +93,7 @@ public class TelaInicial extends javax.swing.JFrame {
                 + "Udson Willams \n"
                 + "Ano do Projeto: 2020 \n"
                 + "Curso: Sistemas Para Internet \n"
-                + "Periodo do curso: 2° Periodo \n");
+                + "Periodo do curso: 2° Periodo \n","INFORMAÇÃO",JOptionPane.INFORMATION_MESSAGE,painel);
     }//GEN-LAST:event_btnSobreActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
