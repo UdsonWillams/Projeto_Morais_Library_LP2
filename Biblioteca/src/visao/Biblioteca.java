@@ -36,12 +36,15 @@ public class Biblioteca extends javax.swing.JFrame {
         
       
         Usuario alunoOne = new Usuario("Pedro José","555.987.234-56","Masculino","(83)99958-4423","PedroJose@gmail.com",
-                "Rua projetada","João Pessoa","aaaaa",3,"Aluno","Farmacia");
+                "Rua projetada","João Pessoa","aaaaa",5,"Aluno","Farmacia");
         Usuario alunoTwo = new Usuario("Fernanda","987.654.123-47","Feminino","(81)99116-8901","Fernanda123@hotmail.com",
-                "Rua manuel justus","Recife","bbb",5,"Membro Externo", "null");
+                "Rua manuel justus","Recife","bbb",3,"Membro Externo", "Estudante");
+        Usuario professorOne = new Usuario("Caio Augusto","325.951.854-82","outros","(11)98836-8291","CaioAugustino@gmail.com",
+                "Reinaldo figueredo","Campina Grande","bbbb",8,"Professor", "Dr.pedagogia");
         
         tableModel.addRow(alunoOne);
         tableModel.addRow(alunoTwo);
+        tableModel.addRow(professorOne);
         
         
     }
