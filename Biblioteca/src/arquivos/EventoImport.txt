@@ -1,0 +1,3 @@
+//Nome Espaço, float Area, nomeEvento, nomeResponsavel, dataInicio, dataTermino, int capacidade, espaço
+Hall Central, 805, Evento de Boas Vindas, Marcelo, 25/01/2020, 28/01/2020, 400
+Auditório Central, 2000, Palestra de Abertura, Marcelo, 05/02/2021 06/02/2021, 200

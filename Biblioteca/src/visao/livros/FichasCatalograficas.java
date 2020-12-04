@@ -245,11 +245,11 @@ public class FichasCatalograficas extends javax.swing.JFrame {
             
             document.open();
             document.add(new Paragraph("Ficha Catalografica"));
-            document.add(new Paragraph("\n" + SobrenomeAutor.getText() + ", " + nomeDoAutor.getText() + " " + anoNascimento.getText() + "-"));
+            document.add(new Paragraph("" + SobrenomeAutor.getText() + ", " + nomeDoAutor.getText() + " " + anoNascimento.getText() + "-"));
             document.add(new Paragraph(nomeObra.getText() + ": " + subtitulo.getText() + " / " + nomeDoAutor.getText() + " " + SobrenomeAutor.getText() + ". " + anoConclusao.getText() + "."));
-            document.add(new Paragraph("\n(" + assuntos.getText() + ")"));
-            document.add(new Paragraph("\nISBN: " + ISBN.getText()));
-            document.add(new Paragraph("\nEDITORA: " + editora.getText()));
+            document.add(new Paragraph("(" + assuntos.getText() + ")"));
+            document.add(new Paragraph("ISBN: " + ISBN.getText()));
+            document.add(new Paragraph("EDITORA: " + editora.getText()));
             document.add(new Paragraph("\nOrientador: " + orientador.getText()));
             document.add(new Paragraph("\n" + tipoObra.getText()));                         
         } catch (FileNotFoundException | DocumentException ex) {

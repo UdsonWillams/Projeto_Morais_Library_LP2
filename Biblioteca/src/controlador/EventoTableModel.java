@@ -5,9 +5,9 @@
  */
 package controlador;
 
+
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
-import modelo.Espaco;
 import modelo.Evento;
 
 /**

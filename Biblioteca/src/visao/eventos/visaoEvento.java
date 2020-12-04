@@ -4,12 +4,25 @@
  * and open the template in the editor.
  */
 package visao.eventos;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import controlador.EventoTableModel;
 import controlador.EspacoTableModel;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Evento;
 import modelo.Espaco;
+import visao.livros.FichasCatalograficas;
+import modelo.LeitorArquivo;
 
 /**
  *
@@ -57,6 +70,10 @@ public class VisaoEvento extends javax.swing.JFrame {
         tableModel.addRow(ev3);
         tableModel.addRow(ev5);
         
+        //Setando variáveis para importação
+        LeitorArquivo eventoImport = new LeitorArquivo();
+        
+        
     }
 
     /**
@@ -87,9 +104,12 @@ public class VisaoEvento extends javax.swing.JFrame {
         jBtExcluir = new javax.swing.JButton();
         jBtAlterar = new javax.swing.JButton();
         jBtVoltar = new javax.swing.JButton();
+        jBtSalvar1 = new javax.swing.JButton();
+        jBtImportar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Biblioteca - Janela de Eventos");
+        setResizable(false);
 
         jTEventos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -245,6 +265,31 @@ public class VisaoEvento extends javax.swing.JFrame {
             }
         });
 
+        jBtSalvar1.setBackground(new java.awt.Color(0, 51, 204));
+        jBtSalvar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon-pdf.png"))); // NOI18N
+        jBtSalvar1.setText("Relatório");
+        jBtSalvar1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jBtSalvar1.setHideActionText(true);
+        jBtSalvar1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtSalvar1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtSalvar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtSalvar1ActionPerformed(evt);
+            }
+        });
+
+        jBtImportar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-importar-csv-32.png"))); // NOI18N
+        jBtImportar.setText("Importar");
+        jBtImportar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jBtImportar.setHideActionText(true);
+        jBtImportar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtImportar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtImportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtImportarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -257,11 +302,17 @@ public class VisaoEvento extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBtVoltar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jBtSalvar1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBtVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jBtSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBtAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBtImportar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBtExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
@@ -270,16 +321,20 @@ public class VisaoEvento extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jBtAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBtExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBtSalvar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jBtAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBtExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBtSalvar))
+                    .addComponent(jBtImportar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtVoltar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBtVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtSalvar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         setSize(new java.awt.Dimension(754, 578));
@@ -357,6 +412,42 @@ public class VisaoEvento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBoxEspacoActionPerformed
 
+    private void jBtSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtSalvar1ActionPerformed
+        Document document = new Document();
+        
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("Relatório de Eventos.pdf"));
+            
+            document.open();
+            document.add(new Paragraph("Relatório de Eventos"));
+            document.add(new Paragraph("\nQuantidade de Eventos registrados: "+tableModel.getRowCount()));
+            for (int i = 0; i<tableModel.getRowCount(); i++){
+                document.add(new Paragraph("\n###############################"));
+                document.add(new Paragraph("\nEvento ["+tableModel.getValueAt(i, 0)+"]"));
+                document.add(new Paragraph("Pessoa Responsável pelo Evento: " + tableModel.getValueAt(i, 1)));
+                document.add(new Paragraph("Espaço Reservado para o Evento: " + tableModel.getValueAt(i, 5)));
+                document.add(new Paragraph("Capacidade máxima do Evento: " + tableModel.getValueAt(i, 4)));
+                document.add(new Paragraph("Data de Início do Evento: " + tableModel.getValueAt(i, 2)));
+                document.add(new Paragraph("Data de Término do Evento: " + tableModel.getValueAt(i, 3)));
+                document.add(new Paragraph("\n###############################"));
+            }                       
+        } catch (FileNotFoundException | DocumentException ex) {
+            System.out.println("Error"+ ex);                                        
+        }finally{
+            document.close();
+        }
+        
+        try{
+            Desktop.getDesktop().open(new File("Relatório de Eventos.pdf"));
+        } catch (IOException ex) {
+            Logger.getLogger(FichasCatalograficas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBtSalvar1ActionPerformed
+
+    private void jBtImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtImportarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtImportarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -397,7 +488,9 @@ public class VisaoEvento extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jBoxEspaco;
     private javax.swing.JButton jBtAlterar;
     private javax.swing.JButton jBtExcluir;
+    private javax.swing.JButton jBtImportar;
     private javax.swing.JButton jBtSalvar;
+    private javax.swing.JButton jBtSalvar1;
     private javax.swing.JButton jBtVoltar;
     private javax.swing.JLabel jLabelCap;
     private javax.swing.JLabel jLabelDataCmc;

@@ -48,6 +48,7 @@ public class VisaoSalaEstudo extends javax.swing.JFrame {
         tableModel.addRow(s6);
         
         
+        
     }
 
     /**
