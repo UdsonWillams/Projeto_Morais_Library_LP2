@@ -3,6 +3,9 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
 import controlador.TableModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 
 
 public class Biblioteca extends javax.swing.JFrame {
@@ -390,10 +393,7 @@ public class Biblioteca extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addComponent(btnSairTabela)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panResultadoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         panResultadoLayout.setVerticalGroup(
             panResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -423,27 +423,29 @@ public class Biblioteca extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(123, 123, 123)
+                                .addGap(29, 29, 29)
+                                .addComponent(panCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(68, 68, 68)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnVisualizar)
-                                    .addComponent(btnCadastrarUsuario)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(287, 287, 287)
-                                .addComponent(jLabel1)))
-                        .addGap(58, 58, 58)
-                        .addComponent(btnVoltaMenu)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(123, 123, 123)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel3))
+                                        .addGap(68, 68, 68)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(btnVisualizar)
+                                            .addComponent(btnCadastrarUsuario)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(287, 287, 287)
+                                        .addComponent(jLabel1)))
+                                .addGap(58, 58, 58)
+                                .addComponent(btnVoltaMenu)))
+                        .addGap(0, 69, Short.MAX_VALUE))
+                    .addComponent(panResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -493,43 +495,48 @@ public class Biblioteca extends javax.swing.JFrame {
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
         
         if(txtNomeUsuario.getText().equals("")) {
-            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n[NOME,OBRIGATORIO!]");
+            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n NOME \n OBRIGATORIO!","ERRO",2);
             return;
         }
         if(txtCpf.getText().equals("")) {
-            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n[CPF,OBRIGATORIO!]");
+            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n CPF \n OBRIGATORIO!","ERRO",2);
             return;
         }
         if(txtGenero.getSelectedItem().toString().equals("")) {
-            JOptionPane.showMessageDialog(null,"Por favor Selecione a opção desejada\n[GÊNERO,OBRIGATORIO!]");
+            JOptionPane.showMessageDialog(null,"Por favor Selecione a opção desejada\n GÊNERO \n OBRIGATORIO!","ERRO",2);
             return;
         }
         if(txtTelefone.getText().equals("")) {
-            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n[TELEFONE,OBRIGATORIO!]");
+            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n TELEFONE \n OBRIGATORIO!","ERRO",2);
             return;
         }
         if(txtEmail.getText().equals("")) {
-            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n[EMAIL,OBRIGATORIO!]");
+            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n EMAIL \n OBRIGATORIO!","ERRO",2);
             return;
         }
         if(txtEndereco.getText().equals("")) {
-            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n[ENDERECO,OBRIGATORIO!]");
+            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n ENDERECO \n OBRIGATORIO!","ERRO",2);
             return;
         }
         if (txtCidade.getText().equals("")) {
-            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n[CIDADE,OBRIGATORIO!]");
+            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n CIDADE \n OBRIGATORIO!","ERRO",2);
             return;
         }
         if (txtCurso.getText().equals("")) {
-            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n[CURSO,OBRIGATORIO!]");
+            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\nCURSO \n OBRIGATORIO!","ERRO",2);
             return;
         }
         if (selectUsuario.getSelectedItem().toString().equals("")) {
-            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n[VINCULO,OBRIGATORIO!]");
+            JOptionPane.showMessageDialog(null,"Por favor preencha os campos\n VINCULO \n OBRIGATORIO!","ERRO",2);
+            return;
+        }
+        if(selectUsuario.getSelectedItem().toString().equals("")) {
+            JOptionPane.showMessageDialog(null,"Por favor Selecione a opção desejada\n VINCULO \n OBRIGATORIO!","ERRO",2);
             return;
         }
         if(selectUsuario.getSelectedItem().toString().equals("Professor")) {
-            JOptionPane.showMessageDialog(null,"Professor cadastrado \n LIMITE DE 8 LIVROS\n MULTA 1 REAL ");
+            Icon profCerto = new ImageIcon(getClass().getResource("/iconMensagem/icons8-ok-32.png"));
+            JOptionPane.showMessageDialog(null,"Professor cadastrado \n \n LIMITE DE 8 LIVROS\n MULTA 1 REAL ","PROFESSOR",JOptionPane.INFORMATION_MESSAGE,profCerto);
              Usuario usuario = new Usuario(nomeUsuario, cpf, genero, telefone, email, endereco, 
                     cidade, categoria,tempo,vinculo, curso);
             
@@ -548,7 +555,8 @@ public class Biblioteca extends javax.swing.JFrame {
             
         }
         if(selectUsuario.getSelectedItem().toString().equals("Aluno")) {
-            JOptionPane.showMessageDialog(null,"Aluno cadastrado\n LIMITE DE 4 LIVROS \n MULTA 3 REAIS");
+            Icon alunoCerto = new ImageIcon(getClass().getResource("/iconMensagem/icons8-ok-32.png"));
+            JOptionPane.showMessageDialog(null,"Aluno cadastrado \n \n LIMITE DE 4 LIVROS \n MULTA 3 REAIS","ALUNO",JOptionPane.INFORMATION_MESSAGE,alunoCerto);
              Usuario usuario = new Usuario(nomeUsuario, cpf, genero, telefone, email, endereco, 
                     cidade, categoria,tempo,vinculo, curso);
             
@@ -566,7 +574,8 @@ public class Biblioteca extends javax.swing.JFrame {
             return;
         }
         if(selectUsuario.getSelectedItem().toString().equals("Membro Externo")) {
-            JOptionPane.showMessageDialog(null,"Membro Externo cadastrado \n LIMITE 3 LIVROS \n Taxa Semestral: R$ 30,00");
+            Icon membroExternoCerto = new ImageIcon(getClass().getResource("/iconMensagem/icons8-ok-32.png"));
+            JOptionPane.showMessageDialog(null,"Membro Externo cadastrado \n\n LIMITE 3 LIVROS \n Taxa Semestral: R$ 30,00","MEMBRO EXTERNO",JOptionPane.INFORMATION_MESSAGE,membroExternoCerto);
              Usuario usuario = new Usuario(nomeUsuario, cpf, genero, telefone, email, endereco, 
                     cidade, categoria,tempo,vinculo, curso);
             
@@ -619,7 +628,8 @@ public class Biblioteca extends javax.swing.JFrame {
             switch(JOptionPane.showConfirmDialog(null,"Tem certeza que deseja \n excluir esse usuário?")) {
                 case SIM:
                     tableModel.remover(tabelaCadastro.getSelectedRow());
-                    JOptionPane.showMessageDialog(null, "Usuário excluido com sucesso!");
+                    Icon excluido = new ImageIcon(getClass().getResource("/iconMensagem/icons8-ok-32.png"));
+                    JOptionPane.showMessageDialog(null, "Usuário excluido com sucesso!","EXCLUIDO",JOptionPane.INFORMATION_MESSAGE,excluido);
                     break;
                 case NAO:;
                 case CANCELAR:
@@ -627,7 +637,7 @@ public class Biblioteca extends javax.swing.JFrame {
             }
             
          }else {
-            JOptionPane.showMessageDialog(null,"Selecione uma das linha \n da Tabela para ser Excluida!");
+            JOptionPane.showMessageDialog(null,"Selecione uma das linha \n da Tabela para ser Excluida!","SELECIONAR",2);
         }
              
     }//GEN-LAST:event_btnRemoveUsuarioActionPerformed

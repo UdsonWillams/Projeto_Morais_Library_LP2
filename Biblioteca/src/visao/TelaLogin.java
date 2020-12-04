@@ -105,7 +105,7 @@ public class TelaLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(this.loginAdmin(txtLogin.getText(), new String(txtSenha.getPassword()))){
             
-            Icon loginCerto = new ImageIcon(getClass().getResource("/img/pin-ok-32.png"));  
+            Icon loginCerto = new ImageIcon(getClass().getResource("/iconMensagem/pin-ok-32.png"));  
             JOptionPane.showMessageDialog(null,"SEJA BEM VINDO\n FUNCIONARIO","FUNCIONARIO",JOptionPane.INFORMATION_MESSAGE,loginCerto);
             TelaPrincipalAdmin telaPrincipal = new TelaPrincipalAdmin();
             telaPrincipal.setVisible(true);
@@ -114,14 +114,14 @@ public class TelaLogin extends javax.swing.JFrame {
         }
         if(this.loginUsuario(txtLogin.getText(), new String(txtSenha.getPassword()))) {
             
-            Icon loginCertoUsuario = new ImageIcon(getClass().getResource("/img/pin-ok-32.png"));  
+            Icon loginCertoUsuario = new ImageIcon(getClass().getResource("/iconMensagem/pin-ok-32.png"));  
             JOptionPane.showMessageDialog(null,"SEJA BEM VINDO\n USUÁRIO","USUÁRIO",JOptionPane.INFORMATION_MESSAGE,loginCertoUsuario);
             TelaPrincipalUsuario telaPrincipal = new TelaPrincipalUsuario();
             telaPrincipal.setVisible(true);
             dispose();            
         }
         else {
-            Icon erroLogin = new ImageIcon(getClass().getResource("/img/pin-errado-32.png"));
+            Icon erroLogin = new ImageIcon(getClass().getResource("/iconMensagem/pin-errado-32.png"));
             JOptionPane.showMessageDialog(null,"SENHA OU LOGIN INVÁLIDO","ERRO L0GIN",JOptionPane.INFORMATION_MESSAGE,erroLogin);
             
         }        
