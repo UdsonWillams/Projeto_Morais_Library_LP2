@@ -1,4 +1,6 @@
 package visao;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class TelaLogin extends javax.swing.JFrame {
@@ -6,6 +8,7 @@ public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
         initComponents();                   
         this.setLocationRelativeTo(null);
+        
     }
     
     @SuppressWarnings("unchecked")
@@ -29,23 +32,31 @@ public class TelaLogin extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
         jLabel1.setText("LOGIN");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuário-de-gênero-neutro-32.png"))); // NOI18N
         jLabel2.setText("Usuário");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cadeado-32.png"))); // NOI18N
         jLabel3.setText("Senha");
 
+        txtLogin.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLoginActionPerformed(evt);
             }
         });
 
+        txtSenha.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-entrar-32.png"))); // NOI18N
         jButton1.setText("Entrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,14 +75,13 @@ public class TelaLogin extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(txtLogin)
-                            .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel3)
+                                .addComponent(txtLogin)
+                                .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -87,9 +97,9 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jButton1)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -97,24 +107,33 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if(txtLogin.getText().equals("")) {
+            JOptionPane.showMessageDialog(null,"POR FAVOR \n digite o usuario","ERRO USUÁRIO",3);
+            return;
+        }
+        if(txtSenha.getPassword().equals("")) {
+            JOptionPane.showMessageDialog(null,"POR FAVOR \n digite a senha","ERRO SENHA",3);
+        }
         if(this.loginAdmin(txtLogin.getText(), new String(txtSenha.getPassword()))){
             
-                
-            JOptionPane.showMessageDialog(null,"SEJA BEM VINDO\n FUNCIONARIO");
+            Icon loginCerto = new ImageIcon(getClass().getResource("/iconMensagem/pin-ok-32.png"));  
+            JOptionPane.showMessageDialog(null,"SEJA BEM VINDO\n FUNCIONARIO","FUNCIONARIO",JOptionPane.INFORMATION_MESSAGE,loginCerto);
             TelaPrincipalAdmin telaPrincipal = new TelaPrincipalAdmin();
             telaPrincipal.setVisible(true);
             dispose();            
             return;            
         }
         if(this.loginUsuario(txtLogin.getText(), new String(txtSenha.getPassword()))) {
-           
-            JOptionPane.showMessageDialog(null,"SEJA BEM VINDO\n USUÁRIO");
+            
+            Icon loginCertoUsuario = new ImageIcon(getClass().getResource("/iconMensagem/pin-ok-32.png"));  
+            JOptionPane.showMessageDialog(null,"SEJA BEM VINDO\n USUÁRIO","USUÁRIO",JOptionPane.INFORMATION_MESSAGE,loginCertoUsuario);
             TelaPrincipalUsuario telaPrincipal = new TelaPrincipalUsuario();
             telaPrincipal.setVisible(true);
             dispose();            
         }
         else {
-            JOptionPane.showMessageDialog(null,"SENHA OU LOGIN INVÁLIDO");
+            Icon erroLogin = new ImageIcon(getClass().getResource("/iconMensagem/pin-errado-32.png"));
+            JOptionPane.showMessageDialog(null,"SENHA OU LOGIN INVÁLIDO","ERRO L0GIN",JOptionPane.INFORMATION_MESSAGE,erroLogin);
             
         }        
     }//GEN-LAST:event_jButton1ActionPerformed

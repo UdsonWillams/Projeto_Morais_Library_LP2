@@ -312,7 +312,7 @@ public class visaoEvento extends javax.swing.JFrame {
                 tableModel.setValueAt(jTxtDataCmc.getText(), jTEventos.getSelectedRow(), 2);
                 tableModel.setValueAt(jTxtDataFim.getText(), jTEventos.getSelectedRow(), 3);
                 tableModel.setValueAt(jTxtCap.getText(), jTEventos.getSelectedRow(), 4);
-                tableModel.setValueAt(jTxtEsp.getText(), jTEventos.getSelectedRow(), 5);
+                //tableModel.setValueAt(jTxtEsp.getText(), jTEventos.getSelectedRow(), 5);
                 JOptionPane.showMessageDialog(null, "Evento alterado com sucesso!");
                 break;
             case NAO:;
@@ -333,7 +333,7 @@ public class visaoEvento extends javax.swing.JFrame {
             jTxtDataCmc.setText((String) tableModel.getValueAt(jTEventos.getSelectedRow(), 2));
             jTxtDataFim.setText((String) tableModel.getValueAt(jTEventos.getSelectedRow(), 3));
             jTxtCap.setText((String) tableModel.getValueAt(jTEventos.getSelectedRow(), 4).toString());
-            jTxtEsp.setText((String) tableModel.getValueAt(jTEventos.getSelectedRow(), 5));
+            //jTxtEsp.setText((String) tableModel.getValueAt(jTEventos.getSelectedRow(), 5));
         }
     }//GEN-LAST:event_jTEventosMouseClicked
 

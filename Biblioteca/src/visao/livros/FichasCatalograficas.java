@@ -1,22 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package visao.livros;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Livro;
 
 /**
- *
  * @author UdsonWillams
  */
 public class FichasCatalograficas extends javax.swing.JFrame {
-
-    /**
-     * Creates new form FichasCatalograficas
-     */
     public FichasCatalograficas() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -32,24 +33,39 @@ public class FichasCatalograficas extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        nomeDoLivro = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        texto = new javax.swing.JTextArea();
+        nomeDoAutor = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        SobrenomeAutor = new javax.swing.JTextField();
+        nomeObra = new javax.swing.JTextField();
+        ISBN = new javax.swing.JTextField();
+        assuntos = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        anoNascimento = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        anoConclusao = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        subtitulo = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        orientador = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        tipoObra = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        editora = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Nome do livro: ");
+        jLabel1.setText("Nome do autor: ");
 
-        nomeDoLivro.addActionListener(new java.awt.event.ActionListener() {
+        nomeDoAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeDoLivroActionPerformed(evt);
+                nomeDoAutorActionPerformed(evt);
             }
         });
-
-        texto.setColumns(20);
-        texto.setRows(5);
-        jScrollPane1.setViewportView(texto);
 
         jButton1.setText("Voltar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -58,46 +74,140 @@ public class FichasCatalograficas extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Sobrenome Do autor:");
+
+        jLabel3.setText("Titulo da obra:");
+
+        jLabel4.setText("ISBN:");
+
+        jLabel5.setText("Assuntos:");
+
+        jButton2.setBackground(new java.awt.Color(0, 51, 204));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon-pdf.png"))); // NOI18N
+        jButton2.setText("Gerar Ficha Catalografica");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Ano de Nascimento do autor:");
+
+        jLabel7.setText("Ano de conclusão da obra:");
+
+        jLabel8.setText("subtitulo");
+
+        jLabel9.setText("Orientador: ");
+
+        jLabel10.setText("Tipo da Obra:");
+
+        tipoObra.setText("Trabalho de conclusão de curso");
+
+        jLabel11.setText("Editora");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(nomeDoLivro)
-                .addGap(27, 27, 27))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
+                .addContainerGap(202, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(166, 166, 166)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(111, 111, 111))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addContainerGap())))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nomeDoAutor)
+                    .addComponent(SobrenomeAutor)
+                    .addComponent(ISBN)
+                    .addComponent(assuntos)
+                    .addComponent(anoNascimento)
+                    .addComponent(nomeObra)
+                    .addComponent(anoConclusao)
+                    .addComponent(subtitulo)
+                    .addComponent(orientador)
+                    .addComponent(tipoObra, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                    .addComponent(editora))
+                .addGap(74, 74, 74))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(nomeDoLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                    .addComponent(nomeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(anoNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(SobrenomeAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(nomeObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(subtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(anoConclusao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(assuntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(orientador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(tipoObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(editora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nomeDoLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeDoLivroActionPerformed
+    private void nomeDoAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeDoAutorActionPerformed
         
-        LivrosDaBiblioteca teste = new LivrosDaBiblioteca();
+       /* LivrosDaBiblioteca teste = new LivrosDaBiblioteca();
         int i;
         ArrayList<Livro> teste2 = new ArrayList<Livro>();
         Livro validador = new Livro();
@@ -108,7 +218,7 @@ public class FichasCatalograficas extends javax.swing.JFrame {
         for (i = 0; i < quantidade; i++){
         
             validador = teste2.get(i);
-            if (validador.getNomeDoLivro().equals(nomeDoLivro.getText())){
+            if (validador.getNomeDoLivro().equals(nomeDoAutor.getText())){
                 
                 texto.setText("NOME: " + validador.getNomeDoLivro().toUpperCase() +
                         "\n" + "TIPO: " + validador.getTipoDoLivro().toUpperCase() +
@@ -117,13 +227,44 @@ public class FichasCatalograficas extends javax.swing.JFrame {
                         "\n" + "QUANTIDADE DISPONIVEL: " + validador.getQuantidadeLivros());
             }            
         }
-    }//GEN-LAST:event_nomeDoLivroActionPerformed
+        */
+    }//GEN-LAST:event_nomeDoAutorActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         this.setVisible(false);
         new TelaLivros().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        Document document = new Document();
+        
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("ficha catalografica.pdf"));
+            
+            document.open();
+            document.add(new Paragraph("Ficha Catalografica"));
+            document.add(new Paragraph("\n" + SobrenomeAutor.getText() + ", " + nomeDoAutor.getText() + " " + anoNascimento.getText() + "-"));
+            document.add(new Paragraph(nomeObra.getText() + ": " + subtitulo.getText() + " / " + nomeDoAutor.getText() + " " + SobrenomeAutor.getText() + ". " + anoConclusao.getText() + "."));
+            document.add(new Paragraph("\n(" + assuntos.getText() + ")"));
+            document.add(new Paragraph("\nISBN: " + ISBN.getText()));
+            document.add(new Paragraph("\nEDITORA: " + editora.getText()));
+            document.add(new Paragraph("\nOrientador: " + orientador.getText()));
+            document.add(new Paragraph("\n" + tipoObra.getText()));                         
+        } catch (FileNotFoundException | DocumentException ex) {
+            System.out.println("Error"+ ex);                                        
+        }finally{
+            document.close();
+        }
+        
+        try{
+            Desktop.getDesktop().open(new File("ficha catalografica.pdf"));
+        } catch (IOException ex) {
+            Logger.getLogger(FichasCatalograficas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,10 +302,29 @@ public class FichasCatalograficas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ISBN;
+    private javax.swing.JTextField SobrenomeAutor;
+    private javax.swing.JTextField anoConclusao;
+    private javax.swing.JTextField anoNascimento;
+    private javax.swing.JTextField assuntos;
+    private javax.swing.JTextField editora;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField nomeDoLivro;
-    private javax.swing.JTextArea texto;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField nomeDoAutor;
+    private javax.swing.JTextField nomeObra;
+    private javax.swing.JTextField orientador;
+    private javax.swing.JTextField subtitulo;
+    private javax.swing.JTextField tipoObra;
     // End of variables declaration//GEN-END:variables
 }
