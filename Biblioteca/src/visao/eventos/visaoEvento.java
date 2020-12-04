@@ -42,6 +42,10 @@ public class visaoEvento extends javax.swing.JFrame {
         jBoxEspaco.addItem(e2.toString());
         jBoxEspaco.addItem(e3.toString());
         
+        for (int i = 0; i < espacos.getRowCount(); i ++){
+            jBoxEspaco.addItem(espacos.getItem(i));
+        }
+        
     }
 
     /**

@@ -48,7 +48,6 @@ public class visaoEspaco extends javax.swing.JFrame {
         jButtonVoltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Janela de Espaços");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -223,7 +222,7 @@ public class visaoEspaco extends javax.swing.JFrame {
     }//GEN-LAST:event_jTEspacoMouseClicked
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
-        dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     /**
