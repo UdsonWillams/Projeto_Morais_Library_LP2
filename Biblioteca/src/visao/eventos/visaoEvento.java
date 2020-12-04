@@ -35,16 +35,27 @@ public class visaoEvento extends javax.swing.JFrame {
         jBoxEspaco.removeAllItems();
         
         //Adicionando espaços para teste
-        Espaco e1 = new Espaco("Leo", 15);
-        Espaco e2 = new Espaco("Espaço 2", 20);
-        Espaco e3 = new Espaco("Espaço 3", 30);
+        Espaco e1 = new Espaco("Espaço 1", 800);
+        Espaco e2 = new Espaco("Espaço 2", 1100);
+        Espaco e3 = new Espaco("Auditório Central", 2000);
+        
+        //Adicionando espaços na comboBox
         jBoxEspaco.addItem(e1.toString());
         jBoxEspaco.addItem(e2.toString());
         jBoxEspaco.addItem(e3.toString());
+
+        //Adicionando eventos para teste
+        Evento ev1 = new Evento("INOVA", "Marcelo", "03/11/2020", "10/11/2020", 1000, "Espaço 2");
+        Evento ev2 = new Evento("Natal UNIESP", "Aline", "24/12/2020", "25/12/2020", 750, "Auditório Central");
+        Evento ev3 = new Evento("Ano Novo UNIESP", "Alana", "30/12/2020", "01/01/2021", 800, "Auditório Central");
+        Evento ev4 = new Evento("Feira do Livro", "Elaine", "15/11/2020", "20/11/2020", 300, "Espaço 1");
+        Evento ev5 = new Evento("Workshop de QA", "Marcelo", "05/01/2021", "08/01/2020", 400, "Espaço 1");
         
-        for (int i = 0; i < espacos.getRowCount(); i ++){
-            jBoxEspaco.addItem(espacos.getItem(i));
-        }
+        tableModel.addRow(ev1);
+        tableModel.addRow(ev2);
+        tableModel.addRow(ev4);
+        tableModel.addRow(ev3);
+        tableModel.addRow(ev5);
         
     }
 
@@ -78,7 +89,7 @@ public class visaoEvento extends javax.swing.JFrame {
         jBtVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Janela de Eventos");
+        setTitle("Biblioteca - Janela de Eventos");
 
         jTEventos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -160,9 +171,9 @@ public class visaoEvento extends javax.swing.JFrame {
                     .addComponent(jLabelCap))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTxtCap, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                    .addComponent(jBoxEspaco, 0, 90, Short.MAX_VALUE))
-                .addGap(93, 93, 93))
+                    .addComponent(jBoxEspaco, 0, 120, Short.MAX_VALUE)
+                    .addComponent(jTxtCap))
+                .addGap(63, 63, 63))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,6 +297,11 @@ public class visaoEvento extends javax.swing.JFrame {
         Evento e = new Evento(nomeEven, nomeResp, dataCmc, dataFim, capacidade, espaco);
         tableModel.addRow(e);
         JOptionPane.showMessageDialog(null, "Evento cadastrado com sucesso!");
+        jTxtNomeEven.setText("");
+        jTxtNomeResp.setText("");
+        jTxtDataCmc.setText("");
+        jTxtDataFim.setText("");
+        jTxtCap.setText("");
         
     }//GEN-LAST:event_jBtSalvarActionPerformed
 
@@ -312,7 +328,7 @@ public class visaoEvento extends javax.swing.JFrame {
                 tableModel.setValueAt(jTxtDataCmc.getText(), jTEventos.getSelectedRow(), 2);
                 tableModel.setValueAt(jTxtDataFim.getText(), jTEventos.getSelectedRow(), 3);
                 tableModel.setValueAt(jTxtCap.getText(), jTEventos.getSelectedRow(), 4);
-                //tableModel.setValueAt(jTxtEsp.getText(), jTEventos.getSelectedRow(), 5);
+                tableModel.setValueAt(jBoxEspaco.getSelectedItem(), jTEventos.getSelectedRow(), 5);
                 JOptionPane.showMessageDialog(null, "Evento alterado com sucesso!");
                 break;
             case NAO:;
@@ -333,7 +349,7 @@ public class visaoEvento extends javax.swing.JFrame {
             jTxtDataCmc.setText((String) tableModel.getValueAt(jTEventos.getSelectedRow(), 2));
             jTxtDataFim.setText((String) tableModel.getValueAt(jTEventos.getSelectedRow(), 3));
             jTxtCap.setText((String) tableModel.getValueAt(jTEventos.getSelectedRow(), 4).toString());
-            //jTxtEsp.setText((String) tableModel.getValueAt(jTEventos.getSelectedRow(), 5));
+            jBoxEspaco.setSelectedItem((String) tableModel.getValueAt(jTEventos.getSelectedRow(), 5));
         }
     }//GEN-LAST:event_jTEventosMouseClicked
 

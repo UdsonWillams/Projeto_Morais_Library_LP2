@@ -16,10 +16,10 @@ public class Evento {
     private String dataInicio;
     private String dataTermino;
     private int capacidade;
-    private Espaco espaco;
+    private String espaco;
 
     public Evento(String nomeEvento, String nomeResponsavel, String dataInicio, 
-            String dataTermino, int capacidade, Espaco espaco) {
+            String dataTermino, int capacidade, String espaco) {
         this.nomeEvento = nomeEvento;
         this.nomeResponsavel = nomeResponsavel;
         this.dataInicio = dataInicio;
@@ -70,11 +70,11 @@ public class Evento {
         this.capacidade = capacidade;
     }
 
-    public Espaco getEspaco() {
+    public String getEspaco() {
         return espaco;
     }
 
-    public void setEspaco(Espaco espaco) {
+    public void setEspaco(String espaco) {
         this.espaco = espaco;
     }
 

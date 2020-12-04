@@ -90,7 +90,7 @@ public class EventoTableModel extends AbstractTableModel{
                 eventos.get(linha).setCapacidade(Integer.parseInt((String) valor));
                 break;
             case ESPACO_INDEX:
-                eventos.get(linha).setEspaco((Espaco) valor);
+                eventos.get(linha).setEspaco((String) valor);
                 break;
         }
                 
