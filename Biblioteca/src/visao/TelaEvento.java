@@ -32,7 +32,6 @@ public class TelaEvento extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jBtEventos = new javax.swing.JButton();
-        jBtImportarEvento = new javax.swing.JButton();
         jBtEspacos = new javax.swing.JButton();
         jBtSalaEstudo = new javax.swing.JButton();
         jBtVoltar = new javax.swing.JButton();
@@ -41,7 +40,6 @@ public class TelaEvento extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuEvento = new javax.swing.JMenu();
         jMenuItemListEven = new javax.swing.JMenuItem();
-        jMenuItemImpEv = new javax.swing.JMenuItem();
         jMenuEspaço = new javax.swing.JMenu();
         jMenuItemListEsp = new javax.swing.JMenuItem();
         jMenuItemSalaEstudo = new javax.swing.JMenuItem();
@@ -82,22 +80,17 @@ public class TelaEvento extends javax.swing.JFrame {
         jPanel1.setBounds(10, 1510, 590, 49);
 
         jBtEventos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jBtEventos.setText("Lista de Eventos");
+        jBtEventos.setText("Eventos");
         jBtEventos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtEventosActionPerformed(evt);
             }
         });
         getContentPane().add(jBtEventos);
-        jBtEventos.setBounds(10, 80, 130, 30);
-
-        jBtImportarEvento.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jBtImportarEvento.setText("Importar Evento");
-        getContentPane().add(jBtImportarEvento);
-        jBtImportarEvento.setBounds(10, 120, 130, 30);
+        jBtEventos.setBounds(10, 120, 130, 30);
 
         jBtEspacos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jBtEspacos.setText("Lista de Espaços");
+        jBtEspacos.setText("Espaços");
         jBtEspacos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtEspacosActionPerformed(evt);
@@ -107,7 +100,7 @@ public class TelaEvento extends javax.swing.JFrame {
         jBtEspacos.setBounds(10, 160, 130, 30);
 
         jBtSalaEstudo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jBtSalaEstudo.setText("Sala de Estudos");
+        jBtSalaEstudo.setText("Salas de Estudo");
         jBtSalaEstudo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtSalaEstudoActionPerformed(evt);
@@ -149,9 +142,6 @@ public class TelaEvento extends javax.swing.JFrame {
             }
         });
         jMenuEvento.add(jMenuItemListEven);
-
-        jMenuItemImpEv.setText("Importar Evento");
-        jMenuEvento.add(jMenuItemImpEv);
 
         jMenuBar1.add(jMenuEvento);
 
@@ -305,7 +295,6 @@ public class TelaEvento extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtEspacos;
     private javax.swing.JButton jBtEventos;
-    private javax.swing.JButton jBtImportarEvento;
     private javax.swing.JButton jBtSair;
     private javax.swing.JButton jBtSalaEstudo;
     private javax.swing.JButton jBtVoltar;
@@ -314,7 +303,6 @@ public class TelaEvento extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuEspaço;
     private javax.swing.JMenu jMenuEvento;
-    private javax.swing.JMenuItem jMenuItemImpEv;
     private javax.swing.JMenuItem jMenuItemListEsp;
     private javax.swing.JMenuItem jMenuItemListEven;
     private javax.swing.JMenuItem jMenuItemSairGeral;
