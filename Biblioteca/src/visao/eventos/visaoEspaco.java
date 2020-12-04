@@ -12,15 +12,15 @@ import modelo.Espaco;
  *
  * @author Leo
  */
-public class visaoEspaco extends javax.swing.JFrame {
+public class VisaoEspaco extends javax.swing.JFrame {
 
     /**
-     * Creates new form visaoEspaco
+     * Creates new form VisaoEspaco
      */
     
     EspacoTableModel tableModel = new EspacoTableModel();
     
-    public visaoEspaco() {
+    public VisaoEspaco() {
         initComponents();
         
         jTEspaco.setModel(tableModel);
@@ -278,20 +278,21 @@ public class visaoEspaco extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(visaoEspaco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisaoEspaco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(visaoEspaco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisaoEspaco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(visaoEspaco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisaoEspaco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(visaoEspaco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisaoEspaco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new visaoEspaco().setVisible(true);
+                new VisaoEspaco().setVisible(true);
             }
         });
     }

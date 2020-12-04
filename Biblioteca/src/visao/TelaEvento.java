@@ -227,12 +227,12 @@ public class TelaEvento extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSairUserActionPerformed
 
     private void jMenuItemListEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListEspActionPerformed
-        visaoEspaco janela = new visaoEspaco();
+        VisaoEspaco janela = new VisaoEspaco();
         janela.setVisible(true);
     }//GEN-LAST:event_jMenuItemListEspActionPerformed
 
     private void jBtEspacosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtEspacosActionPerformed
-        visaoEspaco janela = new visaoEspaco();
+        VisaoEspaco janela = new VisaoEspaco();
         janela.setVisible(true);
     }//GEN-LAST:event_jBtEspacosActionPerformed
 
@@ -247,22 +247,22 @@ public class TelaEvento extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtSairActionPerformed
 
     private void jBtEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtEventosActionPerformed
-        visaoEvento tela = new visaoEvento();
+        VisaoEvento tela = new VisaoEvento();
         tela.setVisible(true);
     }//GEN-LAST:event_jBtEventosActionPerformed
 
     private void jMenuItemListEvenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListEvenActionPerformed
-        visaoEvento tela = new visaoEvento();
+        VisaoEvento tela = new VisaoEvento();
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuItemListEvenActionPerformed
 
     private void jBtSalaEstudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtSalaEstudoActionPerformed
-        visaoSalaEstudo tela = new visaoSalaEstudo();
+        VisaoSalaEstudo tela = new VisaoSalaEstudo();
         tela.setVisible(true);
     }//GEN-LAST:event_jBtSalaEstudoActionPerformed
 
     private void jMenuItemSalaEstudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalaEstudoActionPerformed
-        visaoSalaEstudo tela = new visaoSalaEstudo();
+        VisaoSalaEstudo tela = new VisaoSalaEstudo();
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuItemSalaEstudoActionPerformed
 
