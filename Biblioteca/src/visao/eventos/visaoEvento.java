@@ -36,6 +36,8 @@ public class VisaoEvento extends javax.swing.JFrame {
     final int CANCELAR = 2;
     ArrayList<String> listaEspaco = new ArrayList<>();
     EspacoTableModel espacos = new EspacoTableModel();
+    ArrayList <Evento> eventoImport = new ArrayList<>();
+    LeitorArquivo leitorArquivo = new LeitorArquivo();
     
     /**
      * Creates new form visaoEvento
@@ -71,7 +73,7 @@ public class VisaoEvento extends javax.swing.JFrame {
         tableModel.addRow(ev5);
         
         //Setando variáveis para importação
-        LeitorArquivo eventoImport = new LeitorArquivo();
+       
         
         
     }
@@ -445,7 +447,20 @@ public class VisaoEvento extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtSalvar1ActionPerformed
 
     private void jBtImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtImportarActionPerformed
-        // TODO add your handling code here:
+        try {
+            eventoImport = leitorArquivo.importarArquivo("src/arquivos/EventoImport.txt");            
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        
+        for (int i = 0; i< eventoImport.size(); i++){
+            tableModel.addRow(eventoImport.get(i));
+        }
+        
+        JOptionPane.showMessageDialog(null, "Eventos importados com Sucesso!!");
+        
+        
+        
     }//GEN-LAST:event_jBtImportarActionPerformed
 
     /**

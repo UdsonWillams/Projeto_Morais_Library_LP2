@@ -29,9 +29,7 @@ public class LeitorArquivo {
         while (br.ready()) {
                 String linha = br.readLine();
                 String[] colunas = linha.split(",");
-                Espaco espaco = new Espaco(colunas[0], Float.parseFloat(colunas[1]));
-                Evento evento = new Evento(colunas[2], colunas[3], colunas[4], colunas[5], Integer.parseInt(colunas[6]), colunas[7]);
-                System.out.println("Id Evento: " + colunas[0]);
+                Evento evento = new Evento(colunas[0], colunas[1], colunas[2], colunas[3],(int) Integer.parseInt(colunas[4]), colunas[5]);
                 eventos.add(evento);
 
         }
